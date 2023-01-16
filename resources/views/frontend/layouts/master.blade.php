@@ -14,7 +14,7 @@
     <meta name="description" content="Fabrex - Multipurpose Business and Admin Template" />
 
     <!-- title  -->
-    <title>Fabrex - Multipurpose Business and Admin Template</title>
+    <title>E-legislasi - Tanggamus</title>
 
     <!-- favicon -->
 
