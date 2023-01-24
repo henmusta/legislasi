@@ -8,12 +8,20 @@
 
                 <div class="row">
                     <div class="col-md-12">
+<<<<<<< HEAD
                         <h1>E-legislasi</h1>
+=======
+                        <h1>E-Aspirasi</h1>
+>>>>>>> 520f12f (a)
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="home-default.html">Home</a></li>
+<<<<<<< HEAD
                             <li><a href="#!">E-legislasi</a></li>
+=======
+                            <li><a href="#!">E-Aspirasi</a></li>
+>>>>>>> 520f12f (a)
                         </ul>
                     </div>
                 </div>
@@ -25,6 +33,7 @@
         ================================================== -->
         <section  class="bg-img" data-overlay-dark="0" data-background="{{ asset('assets/frontend/img/bg/bg6.jpg')}}" style="background-image: url({{ asset('assets/frontend/img/bg/bg6.jpg')}});">
             <div class="container">
+<<<<<<< HEAD
               <div class="section-heading">
                     <h2>Form Aspirasi</h2>
               </div>
@@ -273,6 +282,39 @@
                         
                
                                 
+=======
+                <div class="contact-form-box">
+                    <form class="contact quform" action="quform/contact.php" method="post" enctype="multipart/form-data" onclick="">
+                        <div class="quform-elements">
+                            <div class="row">
+
+                                <!-- Begin Captcha element -->
+                                <div class="col-md-12">
+                                    <div class="quform-element">
+                                        <div class="form-group">
+                                            <div class="quform-input">
+                                                <input class="form-control" id="type_the_word" type="text" name="type_the_word" placeholder="Type the below word" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Captcha element -->
+
+                                <!-- Begin Submit button -->
+                                <div class="col-md-12">
+                                    <div class="quform-submit-inner">
+                                        <button class="butn" type="submit"><span>Sumbit comment</span></button>
+                                    </div>
+                                    <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
+                                </div>
+                                <!-- End Submit button -->
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+>>>>>>> 520f12f (a)
            </div>
         </section>
 
@@ -289,6 +331,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 <script>
 $(document).ready(function () {
+<<<<<<< HEAD
     let select2Kabupaten = $('#select2Kabupaten');
     let select2Kecamatan = $('#select2Kecamatan');
     let select2Skpd = $('#select2Skpd');
@@ -425,6 +468,8 @@ $(document).ready(function () {
           }
         });
       });
+=======
+>>>>>>> 520f12f (a)
 
 
 });

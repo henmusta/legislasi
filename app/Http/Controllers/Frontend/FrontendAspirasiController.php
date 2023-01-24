@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Aspirasi;
-use App\Models\FormAspirasi;
+use App\Models\Legislasi;
+use App\Models\AgendaFile;
+use App\Models\Agenda;
 use App\Models\User;
+use App\Models\Comment;
+use App\Models\TahapanLegislasi;
+use App\Models\LegislasiTahapanLegislasi;
 use Carbon\Carbon;
+use App\Models\Legi;
 use App\Traits\ResponseStatus;
 use App\Helpers\FileUpload;
 use Illuminate\Http\Request;
@@ -20,18 +25,21 @@ use Throwable;
 
 class FrontendAspirasiController extends Controller
 {
+
     use ResponseStatus;
     public function index(Request $request)
     {
-        $config['page_title'] = "E-Aspirasi";
+        $config['page_title'] = "E-Legislasi";
         $page_breadcrumbs = [
           ['url' => route('home.index'), 'title' => "Home"],
-          ['url' => '#', 'title' => "E-Aspirasi"],
+          ['url' => '#', 'title' => "E-Legislasi"],
         ];
-        $fromaspirasi = FormAspirasi::all();
-            $data = [
-                'form' =>  $fromaspirasi,
-            ];
+        // $legislasi = Legislasi::with('pengusul', 'tahapan');
+        // $tahapan = TahapanLegislasi::withCount('legislasi')->get();
+        //     $data = [
+        //         'tahapan' => $tahapan,
+        //         'last_legislasi' => $legislasi->orderBy('id', 'DESC')->limit(3)->get()
+        //     ];
 
         // if ($request->ajax()) {
         //   $data = Legislasi::with('pengusul', 'tahapan');
@@ -43,105 +51,7 @@ class FrontendAspirasiController extends Controller
         //     ->make(true);
         // }
 
-        return view('frontend.aspirasi.index', compact('config', 'page_breadcrumbs','data'));
-    }
-
-
-    public function store(Request $request)
-    {
-        // dd( $request);
-        $validator = Validator::make($request->all(), [
-            'nik' => 'required',
-            'name' => 'required', 
-            'telp' => 'required', 
-            'kabupaten_id' => 'required', 
-            'kecamatan_id' => 'required', 
-            'alamat'=> 'required',
-            'aspirasi' => 'required',
-            'komisi' => 'required', 
-            'isu' => 'required',
-            'urusan' => 'required',
-            'skpd_id' => 'required',
-            'anggaran'=> 'required',
-            'sasaran'=> 'required', 
-            'lampiran'=> 'required', 
-            'dewan_id'=> 'required',
-          ]);
-
-      
-
-
-          if ($validator->passes()) {
-            DB::beginTransaction();
-            try {
-
-                $user = User::updateOrCreate(
-                    ['nik' => $request['nik']],
-                    [
-                        'nik' => $request['nik'],
-                        'name' => $request['name'],
-                        'telp' => $request['telp'],
-                        'jabatan_id' => 2,
-                    ]
-                );
-
-                $aspirasi = Aspirasi::create([
-                    'tgl_buat' => Carbon::now(),
-                    'user_id' =>  $user['id'],
-                    'nik' => $request['nik'],
-                    'name' => ucwords($request['name']), 
-                    'telp' => $request['telp'],
-                    'kabupaten_id' =>  $request['kabupaten_id'],
-                    'kecamatan_id' =>  $request['kecamatan_id'],
-                    'alamat'=>  $request['alamat'],
-                    'aspirasi' =>  $request['aspirasi'],
-                    'komisi' =>  $request['komisi'], 
-                    'isu' =>  $request['isu'],
-                    'urusan' =>  $request['urusan'],
-                    'skpd_id' =>  $request['skpd_id'],
-                    'anggaran'=>  $request['anggaran'],
-                    'sasaran'=>  $request['sasaran'], 
-                    // 'lampiran'=>  $request['lampiran'], 
-                    'dewan_id'=>  $request['dewan_id']
-                ]);
-
-
-                if(isset($aspirasi['id']) && isset($request['lampiran'])){
-                    $file = $request['lampiran'];
-                    $lampiranURL = Fileupload::uploadFileMultiple($file, 'lampiran');
-                    $aspirasi->update([
-                        'lampiran' => $lampiranURL
-                    ]);
-                }
-                  DB::commit();
-                  $response = response()->json($this->responseStore(true, route('e-aspirasi.show', $aspirasi['id'])));
-            } catch (Throwable $throw) {
-                dd($throw);
-                DB::rollBack();
-                $response = response()->json($this->responseStore(false));
-            }
-
-          } else {
-            $response = response()->json(['error' => $validator->errors()->all()]);
-          }
-          return $response;
-    }
-
-    public function show($id)
-    {
-     
-    
-      $config['page_title'] = "E-aspirasi";
-      $page_breadcrumbs = [
-        ['url' => route('home.index'), 'title' => "Detail Legislasi"],
-        ['url' => '#', 'title' => "Detail Legislasi"],
-      ];
-      $aspirasi = Aspirasi::findOrFail($id);
-      $data = [
-        'aspirasi' => $aspirasi,
-      ];
-
-      return view('frontend.aspirasi.show', compact('page_breadcrumbs', 'config', 'data'));
+        return view('frontend.aspirasi.index', compact('config', 'page_breadcrumbs'));
     }
 
 }

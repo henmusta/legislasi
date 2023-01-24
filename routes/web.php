@@ -143,7 +143,10 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('imageslider', Backend\SliderImageController::class);
 
 
+<<<<<<< HEAD
          //aspirasi
           Route::resource('formaspirasi', Backend\FormAspirasiController::class);
+=======
+>>>>>>> 520f12f (a)
   });
 });
