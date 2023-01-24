@@ -8,20 +8,12 @@
 
                 <div class="row">
                     <div class="col-md-12">
-<<<<<<< HEAD
                         <h1>E-legislasi</h1>
-=======
-                        <h1>E-Aspirasi</h1>
->>>>>>> 520f12f (a)
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="home-default.html">Home</a></li>
-<<<<<<< HEAD
                             <li><a href="#!">E-legislasi</a></li>
-=======
-                            <li><a href="#!">E-Aspirasi</a></li>
->>>>>>> 520f12f (a)
                         </ul>
                     </div>
                 </div>
@@ -33,32 +25,37 @@
         ================================================== -->
         <section  class="bg-img" data-overlay-dark="0" data-background="{{ asset('assets/frontend/img/bg/bg6.jpg')}}" style="background-image: url({{ asset('assets/frontend/img/bg/bg6.jpg')}});">
             <div class="container">
-<<<<<<< HEAD
               <div class="section-heading">
                     <h2>Form Aspirasi</h2>
               </div>
+              <div id="errorCreate" class="mb-3" style="display:none;">
+                <div class="alert alert-danger" role="alert">
+                  <div class="alert-text">
+                  </div>
+                </div>
+              </div>
               <form id="formStore" action="{{ route('e-aspirasi.store') }}">
-                    @csrf          
+                    @csrf
                 <div class="horizontaltab">
                     <ul class="resp-tabs-list hor_1">
-                        <li><i class="fas fa-medkit"></i>Data Diri</li>
-                        <li><i class="fas fa-cog"></i>Lokasi</li>
-                        <li><i class="fas fa-flask"></i>Usulan</li>
-                        <li><i class="fas fa-user"></i>Diusulkan Kepada</li>
+                        <li id="datadiri"><i class="fas fa-medkit"></i>Data Diri</li>
+                        <li id="lokasi"><i class="fas fa-cog"></i>Lokasi</li>
+                        <li id="usulan"><i class="fas fa-flask"></i>Usulan</li>
+                        <li id="kepada"><i class="fas fa-user"></i>Diusulkan Kepada</li>
                     </ul>
                         <div class="resp-tabs-container hor_1">
-                        <div>
+                        <div id="div_datadiri">
                             <div class="contact-form-box">
                                 <div class="quform-elements">
                                         <div class="row">
                                             <!-- Begin Captcha element -->
-                     
+
                                             @if($data['form'][0]['status'] == '1')
                                             <div class="col-md-12">
                                                 <div class="quform-element">
                                                     <div class="form-group">
                                                         <div class="quform-input">
-                                                            <input class="form-control" id="nik" type="text" name="nik" placeholder="Masukan NIK" />
+                                                            <input class="form-control" id="nik" type="text" name="nik" placeholder="Masukan NIK" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,6 +85,9 @@
                                             @endif
                                             <!-- End Captcha element -->
 
+                                            <div class="d-flex justify-content-end">
+                                                <button type="button" id="btn_datadiri_next" class="btn btn-success">Lanjut</button>
+                                             </div>
 
                                         </div>
                                 </div>
@@ -95,7 +95,7 @@
                         </div>
                         <div>
                             <div class="contact-form-box">
-                            
+
                                 <div class="quform-elements">
                                     <div class="row">
                                         <!-- Begin Captcha element -->
@@ -104,7 +104,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Kabupaten" style="width: 100% !important;" name="kabupaten_id">
+                                                            <select id="select2Kabupaten" style="width: 100% !important;" name="kabupaten">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -116,7 +116,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Kecamatan" style="width: 100% !important;" name="kecamatan_id">
+                                                            <select id="select2Kecamatan" style="width: 100% !important;" name="kecamatan">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -144,7 +144,7 @@
                         </div>
                         <div>
                             <div class="contact-form-box">
-                            
+
                                 <div class="quform-elements">
                                     <div class="row">
                                         <!-- Begin Captcha element -->
@@ -197,7 +197,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Skpd" style="width: 100% !important;" name="skpd_id">
+                                                            <select id="select2Skpd" style="width: 100% !important;" name="skpd">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -245,16 +245,16 @@
                         </div>
                         <div>
                             <div class="contact-form-box">
-                            
+
                                 <div class="quform-elements">
                                     <div class="row">
-                               
+
 
                                         <div class="col-md-12">
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Dewan" style="width: 100% !important;" name="dewan_id">
+                                                            <select id="select2Dewan" style="width: 100% !important;" name="dewan">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -262,10 +262,10 @@
                                         </div>
 
 
-                                 
+
                                         <!-- End Captcha element -->
 
-                                        <div class="d-flex justify-content-end">
+                                         <div class="d-flex justify-content-end">
                                             <button type="button" class="btn btn-secondary me-2" onclick="window.history.back();">
                                                 Kembali
                                             </button>
@@ -277,44 +277,11 @@
                             </div>
                         </div>
                     </div>
-                </div> 
-              </form>  
-                        
-               
-                                
-=======
-                <div class="contact-form-box">
-                    <form class="contact quform" action="quform/contact.php" method="post" enctype="multipart/form-data" onclick="">
-                        <div class="quform-elements">
-                            <div class="row">
-
-                                <!-- Begin Captcha element -->
-                                <div class="col-md-12">
-                                    <div class="quform-element">
-                                        <div class="form-group">
-                                            <div class="quform-input">
-                                                <input class="form-control" id="type_the_word" type="text" name="type_the_word" placeholder="Type the below word" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Captcha element -->
-
-                                <!-- Begin Submit button -->
-                                <div class="col-md-12">
-                                    <div class="quform-submit-inner">
-                                        <button class="butn" type="submit"><span>Sumbit comment</span></button>
-                                    </div>
-                                    <div class="quform-loading-wrap text-start"><span class="quform-loading"></span></div>
-                                </div>
-                                <!-- End Submit button -->
-
-                            </div>
-                        </div>
-                    </form>
                 </div>
+              </form>
 
->>>>>>> 520f12f (a)
+
+
            </div>
         </section>
 
@@ -324,14 +291,45 @@
 @endsection
 
 @section('css')
-
+<style>
+    .disabledTab{
+    pointer-events: none;
+}
+</style>
 @endsection
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 <script>
+
+
+
 $(document).ready(function () {
-<<<<<<< HEAD
+    $("#btn_datadiri_next").click(function() {
+        cektabs('div_datadiri', 'datadiri');
+        //  var valid = validate(id);
+    });
+
+    function cektabs(id_div, id_tab){
+        // alert(id);
+        var div = $("#"+id_div);
+        var tab = $("#"+id_tab);
+        $(div).find("input[type='text']").each(function(index) {
+            if(this.value == "") {
+                var divinput = $("#"+$(this).attr('id'));
+                divinput.addClass('is-invalid');
+                divinput.keyup(function() {
+                    divinput.removeClass('is-invalid');
+                });
+            }else{
+                tab.removeClass('disabledTab');
+            }
+        });
+    }
+
+
+
+
     let select2Kabupaten = $('#select2Kabupaten');
     let select2Kecamatan = $('#select2Kecamatan');
     let select2Skpd = $('#select2Skpd');
@@ -468,8 +466,6 @@ $(document).ready(function () {
           }
         });
       });
-=======
->>>>>>> 520f12f (a)
 
 
 });

@@ -97,7 +97,7 @@ Route::middleware('auth:henmus')->group(function(){
           Route::get('provinsi/select2', [Backend\ProvinsiController::class, 'select2'])->name('provinsi.select2');
           Route::resource('provinsi', Backend\ProvinsiController::class);
           //kabupaten
-  
+
           Route::resource('kabupaten', Backend\KabupatenController::class);
           //kecamatan
 
@@ -115,7 +115,7 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('pengusul', Backend\PengusulController::class);
 
           //dewan
-      
+
           Route::resource('dewan', Backend\DewanController::class);
 
           //skpd
@@ -123,7 +123,7 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('skpd', Backend\SkpdController::class);
 
           //statuslegislasi
-     
+
           Route::resource('tahapanlegislasi', Backend\TahapanLegislasiController::class);
 
 
@@ -143,10 +143,7 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('imageslider', Backend\SliderImageController::class);
 
 
-<<<<<<< HEAD
          //aspirasi
           Route::resource('formaspirasi', Backend\FormAspirasiController::class);
-=======
->>>>>>> 520f12f (a)
   });
 });

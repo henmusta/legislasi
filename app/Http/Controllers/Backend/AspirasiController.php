@@ -26,7 +26,7 @@ class AspirasiController extends Controller
           ['url' => '#', 'title' => "Data Aspirasi"],
         ];
         if ($request->ajax()) {
-          $data = Aspirasi::with('dewan','skpd', 'kabupaten', 'kecamatan');
+          $data = Aspirasi::with('get_dewan','get_skpd', 'get_kabupaten', 'get_kecamatan');
           return DataTables::of($data)
             ->addColumn('action', function ($row) {
                 return '<div class="dropdown">
@@ -45,5 +45,21 @@ class AspirasiController extends Controller
         }
 
         return view('backend.aspirasi.index', compact('config', 'page_breadcrumbs'));
+    }
+
+    public function show($id)
+    {
+      $config['page_title'] = "Detail Aspirasi";
+      $page_breadcrumbs = [
+        ['url' => route('backend.aspirasi.index'), 'title' => "Detail Aspirasi"],
+        ['url' => '#', 'title' => "Detail Aspirasi"],
+      ];
+      $aspirasi = Aspirasi::with('get_dewan','get_skpd', 'get_kabupaten', 'get_kecamatan')->findOrFail($id);
+    //   dd( $aspirasi);
+      $data = [
+        'aspirasi' =>  $aspirasi,
+      ];
+
+      return view('backend.aspirasi.show', compact('page_breadcrumbs', 'config', 'data'));
     }
 }

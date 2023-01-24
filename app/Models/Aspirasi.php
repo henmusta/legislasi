@@ -11,41 +11,42 @@ class Aspirasi extends Model
 
     protected $table = 'aspirasi';
     protected $fillable = [
-        'tgl_buat', 
-        'nik', 
-        'name', 	
+        'tgl_buat',
+        'user_id',
+        'nik',
+        'name',
         'telp',
-        'kabupaten_id', 	
-        'kecamatan_id',	
-        'alamat', 
-        'aspirasi', 	
+        'kabupaten',
+        'kecamatan',
+        'alamat',
+        'aspirasi',
         'komisi',
-        'isu', 
+        'isu',
         'urusan',
-        'skpd_id', 
-        'anggaran', 
-        'lampiran', 
+        'skpd',
+        'anggaran',
+        'lampiran',
         'sasaran',
-        'dewan_id',
+        'dewan',
    ];
 
-   public function skpd()
+   public function get_skpd()
    {
-     return $this->belongsTo(Skpd::class, 'skpd_id');
-   }
-   
-   public function dewan()
-   {
-     return $this->belongsTo(Dewan::class, 'dewan_id');
+     return $this->belongsTo(Skpd::class, 'skpd');
    }
 
-   public function kecamatan()
+   public function get_dewan()
    {
-     return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
+     return $this->belongsTo(Dewan::class, 'dewan');
    }
 
-   public function kabupaten()
+   public function get_kecamatan()
    {
-     return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
+     return $this->belongsTo(Kecamatan::class, 'kecamatan');
+   }
+
+   public function get_kabupaten()
+   {
+     return $this->belongsTo(Kabupaten::class, 'kabupaten');
    }
 }

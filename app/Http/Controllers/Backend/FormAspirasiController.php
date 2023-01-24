@@ -28,7 +28,10 @@ class FormAspirasiController extends Controller
           $data = FormAspirasi::query();
           return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                return '<a type="button"href="#" data-bs-toggle="modal" data-bs-target="#modalEdit" data-bs-id="' . $row->id . '" data-bs-name="' . $row->name . '" class="btn btn-primary">Ubah Status</a>';
+                return ' <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#modalEdit"
+                data-bs-id="' . $row->id . '"
+                data-bs-status="' . $row->status . '"
+               class="btn btn-primary">Ubah</a>';
 
             })
             ->make(true);
@@ -48,44 +51,30 @@ class FormAspirasiController extends Controller
       return view('backend.formaspirasi.create', compact('page_breadcrumbs', 'config'));
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
-          $validator = Validator::make($request->all(), [
-            // 'name' => 'required|unique:dewan,name',
-            // 'deskripsi' => 'required',
-            'id_form' => 'required|unique:form_aspirasi,id_form',
-            'name_form' => 'required|unique:form_aspirasi,name_form',
-            'placeholder_form' => 'required|unique:form_aspirasi,placeholder_form',
-            'type_form' => 'required',
-            'html_form' => 'required',
-            'sort' => 'required',
-            'status' => 'required'
+        $validator = Validator::make($request->all(), [
+            'status' => 'required',
           ]);
 
           if ($validator->passes()) {
             DB::beginTransaction();
             try {
-                $agenda = FormAspirasi::create([
-                    // 'judul' => $request['judul'],
-                    // 'legislasi_id' => $request['legislasi_id'],
-                    // 'deskripsi'  => $request['deskripsi'],
-                    // 'tahapan_id'=> $request['tahapan_id']
-                    'id_form',
-                    'name_form',
-                    'placeholder_form',
-                    'type_form',
-                    'html_form',
-                    'sort',
-                    'status'
+                $data = FormAspirasi::find($id);
+                $data->update([
+                    'status' => $request['status']
                 ]);
-
-                  DB::commit();
-                  $response = response()->json($this->responseStore(true, route('backend.formaspirasi.index')));
-            } catch (Throwable $throw) {
+                DB::commit();
+                $response = response()->json([
+                    'status' => 'success',
+                    'message' => 'Data berhasil diubah',
+                  ]);
+              } catch (Throwable $throw) {
                 dd($throw);
                 DB::rollBack();
                 $response = response()->json($this->responseStore(false));
-            }
+              }
+
           } else {
             $response = response()->json(['error' => $validator->errors()->all()]);
           }

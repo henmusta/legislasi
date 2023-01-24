@@ -13,7 +13,7 @@
                     <div class="flex-grow-1">
                         {{-- <h5 class="card-title mb-3">Transaction</h5> --}}
                     </div>
-                 
+
                 </div>
 
             </div>
@@ -104,9 +104,9 @@
           {data: 'nik', name: 'nik'},
           {data: 'name', name: 'name'},
           {data: 'aspirasi', name: 'aspirasi'},
-          {data: 'kecamatan.name', name: 'kecamatan.name'},
-          {data: 'dewan.name', name: 'dewan.name'},
-          {data: 'skpd.name', name: 'skpd.name'},
+          {data: 'get_kecamatan.name', name: 'get_kecamatan.name'},
+          {data: 'get_dewan.name', name: 'get_dewan.name'},
+          {data: 'get_skpd.name', name: 'get_skpd.name'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         columnDefs: [
