@@ -39,9 +39,9 @@
                 <div class="horizontaltab">
                     <ul class="resp-tabs-list hor_1">
                         <li id="datadiri"><i class="fas fa-medkit"></i>Data Diri</li>
-                        <li id="lokasi"><i class="fas fa-cog"></i>Lokasi</li>
-                        <li id="usulan"><i class="fas fa-flask"></i>Usulan</li>
-                        <li id="kepada"><i class="fas fa-user"></i>Diusulkan Kepada</li>
+                        <li id="lokasi" class="disabledTab"><i class="fas fa-cog"></i>Lokasi</li>
+                        <li id="usulan" class="disabledTab"><i class="fas fa-flask"></i>Usulan</li>
+                        <li id="kepada" class="disabledTab"><i class="fas fa-user"></i>Diusulkan Kepada</li>
                     </ul>
                         <div class="resp-tabs-container hor_1">
                         <div id="div_datadiri">
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div id="div_lokasi">
                             <div class="contact-form-box">
 
                                 <div class="quform-elements">
@@ -104,7 +104,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Kabupaten" style="width: 100% !important;" name="kabupaten">
+                                                            <select class="form-control" id="select2Kabupaten" style="width: 100% !important;" name="kabupaten">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -116,7 +116,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                            <select id="select2Kecamatan" style="width: 100% !important;" name="kecamatan">
+                                                            <select class="form-control" id="select2Kecamatan" style="width: 100% !important;" name="kecamatan">
                                                             </select>
                                                     </div>
                                                 </div>
@@ -128,7 +128,7 @@
                                             <div class="quform-element">
                                                 <div class="form-group">
                                                     <div class="quform-input">
-                                                        <textarea class="form-control h-100" id="alamat" name="alamat" rows="3" placeholder="masukan alamat"></textarea>
+                                                        <textarea class="form-control h-100" type="text" id="alamat" name="alamat" rows="3" placeholder="masukan alamat"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,13 +136,15 @@
                                         @endif
                                         <!-- End Captcha element -->
 
-
+                                        <div class="d-flex justify-content-end">
+                                                <button type="button" id="btn_lokasi_next" class="btn btn-success">Lanjut</button>
+                                             </div>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div>
+                        <div id="div_usulan">
                             <div class="contact-form-box">
 
                                 <div class="quform-elements">
@@ -236,7 +238,9 @@
                                             </div>
                                         </div>
                                         <!-- End Captcha element -->
-
+                                            <div class="d-flex justify-content-end">
+                                                <button type="button" id="btn_usulan_next" class="btn btn-success">Lanjut</button>
+                                             </div>
 
                                     </div>
                                 </div>
@@ -266,9 +270,7 @@
                                         <!-- End Captcha element -->
 
                                          <div class="d-flex justify-content-end">
-                                            <button type="button" class="btn btn-secondary me-2" onclick="window.history.back();">
-                                                Kembali
-                                            </button>
+                                          
                                             <button type="submit" class="btn btn-success">Submit</button>
                                          </div>
                                     </div>
@@ -306,7 +308,17 @@
 
 $(document).ready(function () {
     $("#btn_datadiri_next").click(function() {
-        cektabs('div_datadiri', 'datadiri');
+        cektabs('div_datadiri', 'lokasi');
+        //  var valid = validate(id);
+    });
+
+    $("#btn_lokasi_next").click(function() {
+        cektabs('div_lokasi', 'usulan');
+        //  var valid = validate(id);
+    });
+
+    $("#btn_usulan_next").click(function() {
+        cektabs('div_usulan', 'kepada');
         //  var valid = validate(id);
     });
 
@@ -314,17 +326,38 @@ $(document).ready(function () {
         // alert(id);
         var div = $("#"+id_div);
         var tab = $("#"+id_tab);
-        $(div).find("input[type='text']").each(function(index) {
+        var cekinput = 0;
+        $(div).find(".form-control").each(function(index) {
             if(this.value == "") {
+                cekinput = cekinput + 1;
                 var divinput = $("#"+$(this).attr('id'));
                 divinput.addClass('is-invalid');
                 divinput.keyup(function() {
                     divinput.removeClass('is-invalid');
                 });
-            }else{
-                tab.removeClass('disabledTab');
             }
+
+            // else{
+
+            // }
         });
+        if(cekinput == '0'){
+            tab.removeClass('disabledTab');
+            tab.click();
+        }
+       
+        // $(div).find().each(function(index) {
+        //     if(this.value == "") {
+        //         var divinput = $("#"+$(this).attr('id'));
+        //         divinput.addClass('is-invalid');
+        //         divinput.keyup(function() {
+        //             divinput.removeClass('is-invalid');
+        //         });
+        //     }else{
+        //         tab.removeClass('disabledTab');
+        //         tab.click();
+        //     }
+        // });
     }
 
 
