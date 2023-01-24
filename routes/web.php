@@ -49,6 +49,7 @@ Route::get('/', [Frontend\HomeController::class,  'index'])->name('index');
 Route::resource('/home', Frontend\HomeController::class);
 Route::get('e-legislasi/countlegislasi', [Frontend\FrontendLegislasiController::class, 'countlegislasi'])->name('e-legislasi.countlegislasi');
 Route::resource('/e-legislasi', Frontend\FrontendLegislasiController::class);
+Route::resource('/e-aspirasi', Frontend\FrontendAspirasiController::class);
 // Route::get('/', function () {
 //     return redirect()->route('backend.login');
 //   });
@@ -133,5 +134,7 @@ Route::middleware('auth:henmus')->group(function(){
 
           //sliderimage
           Route::resource('imageslider', Backend\SliderImageController::class);
+
+
   });
 });
