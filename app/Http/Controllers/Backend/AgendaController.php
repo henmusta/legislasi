@@ -115,10 +115,11 @@ class AgendaController extends Controller
                 }
 
                   DB::commit();
-                  $response = response()->json([
-                    'status' => 'success',
-                    'message' => 'Data berhasil Tersimpan',
-                  ]);
+                  if(isset($request['cek']) && $request['cek'] != null){
+                    $response = response()->json($this->responseStore(true, url('backend/legislasi/'.$request['legislasi_id'].'/edit')));
+                  }else{
+                    $response = response()->json($this->responseStore(true, route('backend.agenda.index')));
+                  }
             } catch (Throwable $throw) {
                 dd($throw);
                 DB::rollBack();

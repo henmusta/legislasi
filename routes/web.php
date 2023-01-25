@@ -131,19 +131,19 @@ Route::middleware('auth:henmus')->group(function(){
           Route::get('legislasi/select2', [Backend\LegislasiController::class, 'select2'])->name('legislasi.select2');
           Route::resource('legislasi', Backend\LegislasiController::class);
 
-
           //agenda
           Route::resource('agenda', Backend\AgendaController::class);
 
           //aspirasi
           Route::resource('aspirasi', Backend\AspirasiController::class);
 
-
           //sliderimage
           Route::resource('imageslider', Backend\SliderImageController::class);
 
-
          //aspirasi
           Route::resource('formaspirasi', Backend\FormAspirasiController::class);
+
+            //aspirasi
+          Route::resource('feedback', Backend\CommentController::class);
   });
 });

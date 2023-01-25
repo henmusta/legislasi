@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Legislasi;
+use App\Models\Comment;
 use App\Models\AgendaFile;
 use App\Models\Agenda;
 use App\Models\LegislasiTahapanLegislasi;
@@ -105,10 +106,11 @@ class LegislasiController extends Controller
       ];
       $legislasi = Legislasi::with('pengusul', 'tahapan')->findOrFail($id);
       $agenda = Agenda::with('agendafile')->where('legislasi_id', $legislasi['id'])->get();
-
+      $comment = Comment::where('legislasi_id', $id)->get();
       $data = [
         'legislasi' =>  $legislasi,
-        'agenda' =>   $agenda
+        'agenda' =>   $agenda,
+        'comment' =>   $comment
       ];
       return view('backend.legislasi.show', compact('page_breadcrumbs', 'config', 'data'));
     }

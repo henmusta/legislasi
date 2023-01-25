@@ -911,15 +911,12 @@ $(document).ready(function () {
             if (response.status === "success") {
               let comment =  response.data;
               console.log(comment);
-<<<<<<< HEAD
-=======
               $('#fd_name').val('');
               $('#fd_email').val('');
               $('#fd_nik').val('');
               $('#fd_telp').val('');
               $('#fd_comment').val('');
               toastr.success('Feedback Terkirim', 'Success !');
->>>>>>> d6e6d2b2525c60c84740e6c16d870e1fed03edc0
               let html = '<div class="comments-area">'+
                             '<div class="title-g mb-4">'+
                             '</div>'+

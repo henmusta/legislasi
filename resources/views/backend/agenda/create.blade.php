@@ -22,6 +22,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <input type="hidden" name="cek" value="{{ $data['legislasi']['id'] ?? ''}}">
                                     <input type="hidden" id="legislasi_id" value="{{ $data['legislasi']['id'] ?? ''}}">
                                     <input type="hidden" id="legislasi_judul" value="{{ $data['legislasi']['judul'] ?? ''}}">
                                     <input type="hidden" id="tahapan_id" value="{{ $data['tahapan']['id'] ?? ''}}">
@@ -252,7 +253,11 @@ $(document).ready(function () {
             if (response.status === "success") {
               toastr.success(response.message, 'Success !');
               setTimeout(function () {
-                window.history.back();
+                if (response.redirect === "" || response.redirect === "reload") {
+                  location.reload();
+                } else {
+                  location.href = response.redirect;
+                }
               }, 1000);
             } else {
               toastr.error((response.message ? response.message : "Please complete your form"), 'Failed !');

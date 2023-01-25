@@ -4,6 +4,12 @@
 <div class="page-content">
     <div class="container-fluid">
         <div class="card">
+            <div class="card-header">
+                <div class="float-end">
+                    <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+                    <a onclick="window.history.back();" class="btn btn-primary w-md">Kembali</a>
+                </div>
+            </div>
             <div class="card-body">
                 <div class="invoice-title">
                     {{-- <h4 class="float-end font-size-15">Invoice #DS0204 <span class="badge bg-success font-size-12 ms-2">Paid</span></h4> --}}
@@ -19,19 +25,19 @@
 
 
                 <div class="row" style="padding-top:10px;">
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <address class="mb-6">
                             <h5 class="mb-2">Judul</h5>
                            <p>  {{ $data['legislasi']['judul'] ?? '' }}</p>
                         </address>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <address class="mb-6 mb-0">
                             <h5 class="mb-2">Tahapan</h5>
                            <p>  {{ $data['legislasi']['tahapan']['name'] ?? '' }}</p>
                         </address>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-4">
                         <address class="mb-6 mb-0">
                             <h5 class="mb-2">Pengusul</h5>
                            <p>  {{ $data['legislasi']['pengusul']['name'] ?? '' }}</p>
@@ -69,11 +75,33 @@
                         </table>
                     </div>
                     <div class="d-print-none mt-4">
-                        <div class="float-end">
-                            <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
-                            <a onclick="window.history.back();" class="btn btn-primary w-md">Kembali</a>
-                        </div>
+
                     </div>
+                </div>
+
+                <div class="py-2">
+                         <h5 class="font-size-15">Feedback</h5>
+                        <div class="table-responsive mt-4">
+                            <table class="table">
+                                <thead>
+                                    <tr class="">
+                                        <th class="text-left">Tanggal</th>
+                                        <th class="text-left">Nama</th>
+                                        <th class="text-left">Feedback</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($data['comment'] as $val)
+                                    <tr>
+                                        <td> {{ \Carbon\Carbon::parse($val->created_at)->isoFormat('D MMMM Y')}}</td>
+                                        <td>{{$val->name ?? '-'}}</td>
+                                        <td>{{$val->comment ?? '-'}}</td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
                 </div>
             </div>
         </div>

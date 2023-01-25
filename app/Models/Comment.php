@@ -21,17 +21,11 @@ class Comment extends Model
      'status',
    ];
 
-   public function agendafile()
-   {
-     return $this->hasMany(AgendaFile::class);
-   }
+
 
    public function legislasi()
    {
-     return $this->belongsTo(Legislasi::class, 'legislasi_id');
+     return $this->belongsTo(Legislasi::class);
    }
-   public function Tahapan()
-   {
-     return $this->belongsTo(TahapanLegislasi::class, 'tahapan_id');
-   }
+
 }

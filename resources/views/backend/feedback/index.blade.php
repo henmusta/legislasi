@@ -13,12 +13,7 @@
                     <div class="flex-grow-1">
                         {{-- <h5 class="card-title mb-3">Transaction</h5> --}}
                     </div>
-                    <div class="flex-shrink-0">
-                        <a class="btn btn-primary " href="{{ route('backend.agenda.create') }}">
-                            Tambah
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
+
                 </div>
 
             </div>
@@ -29,10 +24,9 @@
                             <tr>
                                 <th width="5%">No</th>
                                 <th>Ranperda</th>
-                                <th>Agenda</th>
-                                <th>Deskripsi</th>
-                                <th>Tahapan</th>
-                                <th>Aksi</th>
+                                <th>Name</th>
+                                <th>Comment</th>
+                                <th  width="10%">Aksi</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -100,7 +94,7 @@ tr.group:hover {
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         pageLength: 10,
         ajax: {
-          url: "{{ route('backend.agenda.index') }}",
+          url: "{{ route('backend.feedback.index') }}",
           data: function (d) {
             // d.status = $('#Select2Status').find(':selected').val();
           }
@@ -114,13 +108,12 @@ tr.group:hover {
                 }
           },
           {data: 'legislasi.judul', name: 'legislasi.judul'},
-          {data: 'judul', name: 'judul'},
-          {data: 'deskripsi', name: 'deskripsi'},
-          {data: 'tahapan.name', name: 'tahapan.name'},
+          {data: 'name', name: 'name'},
+          {data: 'comment', name: 'comment'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         columnDefs: [
-        { visible: false, targets: groupColumn }
+         { visible: false, targets: groupColumn }
         ],
         drawCallback: function (settings) {
             var api = this.api();
@@ -145,7 +138,7 @@ tr.group:hover {
       modalDelete.addEventListener('show.bs.modal', function (event) {
         let button = event.relatedTarget;
         let id = button.getAttribute('data-bs-id');
-        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.agenda.index") }}/' + id);
+        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.feedback.index") }}/' + id);
       });
       modalDelete.addEventListener('hidden.bs.modal', function (event) {
         this.querySelector('.urlDelete').setAttribute('href', '');
