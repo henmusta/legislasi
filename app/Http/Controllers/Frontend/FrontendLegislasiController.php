@@ -62,7 +62,7 @@ class FrontendLegislasiController extends Controller
         $q->where('agenda.legislasi_id', '=', $id);
        }])->get();
 
-      $comment = Comment::where('legislasi_id', $legislasi['id'])->where('parent_id', '0')->get();
+      $comment = Comment::where('legislasi_id', $legislasi['id'])->where('parent_id', '0')->orderBy('id', 'desc')->get();
       foreach($comment as $key => $val){
         $comment[$key]['comment_child'] = Comment::where('parent_id', $val->id)->get();
       }
