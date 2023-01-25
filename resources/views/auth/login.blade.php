@@ -6,12 +6,12 @@
 <head>
 
         <meta charset="utf-8" />
-        <title>Login | Borex - Admin & Dashboard Template</title>
+        <title>Login | {{Setting::get_setting()->name}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/backend/images/favicon.ico">
+        <link rel="shortcut icon" href="{{URL::to('storage/images/logo/'.Setting::get_setting()->favicon)}}">
 
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/backend/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
