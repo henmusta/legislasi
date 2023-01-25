@@ -384,7 +384,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <textarea name="comment" rows="6" class="form-control h-100" id="comment" placeholder="Masukan Feedback"></textarea>
+                                                                                    <textarea name="comment" rows="6" class="form-control h-100" id="fd_comment" placeholder="Masukan Feedback"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div>
