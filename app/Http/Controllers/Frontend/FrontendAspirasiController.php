@@ -70,7 +70,7 @@ class FrontendAspirasiController extends Controller
                         'name' => $request['name'],
                         'email' => $request['nik'].'@gmail.com',
                         'telp' => $request['telp'],
-                        'jabatan_id' => 2,
+                        'jabatan_id' => 7,
                     ]
                 );
 

@@ -33,17 +33,16 @@ class RoleController extends Controller
       $data = Role::query();
       return DataTables::of($data)
         ->addColumn('action', function ($row) {
-          $statis = $row->statis == '0' ? ' <li> <a href="#" data-bs-toggle="modal" data-bs-target="#modalEdit" data-bs-id="' . $row->id . '" data-bs-name="' . $row->name . '" class="edit dropdown-item">Ubah</a></li>
-            <li> <a href="#" data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-id="' . $row->id . '" class="delete dropdown-item">Hapus</a></li>' : '';
+        
           $actionBtn = '<div class="dropdown">
-                          <button type="button"  class="btn btn-secondary dropdown-toggle" data-bs-boundary="viewport" data-bs-toggle="dropdown" aria-expanded="false">
-                            Aksi <i class="mdi mdi-chevron-down"></i>
-                          </button>
-                          <ul class="dropdown-menu">
-                          <li><a href="' . route('backend.roles.show', $row->id) . '" class="dropdown-item">Detail</a></li>
-                           '.$statis.'
-                          </ul>
-                        </div> ';
+          <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
+            Aksi <i class="mdi mdi-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li> <a href="#" data-bs-toggle="modal" data-bs-target="#modalEdit" data-bs-id="' . $row->id . '" data-bs-name="' . $row->name . '" class="edit dropdown-item">Ubah</a></li>
+            <li> <a href="#" data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-id="' . $row->id . '" class="delete dropdown-item">Hapus</a></li>
+          </ul>
+        </div>';
           return $actionBtn;
 
         })
@@ -63,11 +62,7 @@ class RoleController extends Controller
     ];
 
     $roles = Role::findOrFail($id);
-    $kegiatan = KegiatanRole::with('kegiatan')->where('role_id', $id)->get();
-
-
     $data = [
-      'kegiatan' => $kegiatan,
       'role' => $roles,
     ];
     return view('backend.roles.show', compact('page_breadcrumbs', 'config', 'data'));

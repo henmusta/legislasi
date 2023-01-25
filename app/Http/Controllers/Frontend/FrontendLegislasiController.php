@@ -103,7 +103,7 @@ class FrontendLegislasiController extends Controller
                     'name' => $request['name'],
                     'email' => $request['email'],
                     'telp' => $request['telp'],
-                    'jabatan_id' => 2,
+                    'jabatan_id' => 7,
                 ]
             );
             $data = Comment::create([

@@ -39,8 +39,8 @@ class UserController extends Controller
     ];
 
     if ($request->ajax()) {
-      $data = User::with('roles')->where('jabatan_id', '!=', '2');
-
+      $data = User::with('roles')
+      ->where('jabatan_id', '!=', '7');
       $data->orderBy('name', 'ASC');
       return DataTables::of($data)
         ->addIndexColumn()
