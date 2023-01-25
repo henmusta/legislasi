@@ -150,7 +150,8 @@
 
                                                                 @foreach ($val->agenda[0]['agendafile'] as $file)
                                                                       @php($file_html .= '<tr>
-                                                                                        <td>'.$file['name'].'</td>
+                                                                                        <td><a href="/storage/lampiran/'.$file['name'].'" download>'.$file['name'].'</a></td>
+                                                                                        <!-- <td>'.$file['name'].'</td> -->
                                                                                         <td>'.$file['keterangan'].'</td>
                                                                                     </tr>')
                                                                 @endforeach
@@ -219,7 +220,7 @@
 
                                                        @foreach ($val->agenda[$i]['agendafile'] as $file)
                                                              @php($file_html .= '<tr>
-                                                                               <td>'.$file['name'].'</td>
+                                                                               <td><a href="/storage/lampiran/'.$file['name'].'" download>'.$file['name'].'</a></td>
                                                                                <td>'.$file['keterangan'].'</td>
                                                                            </tr>')
                                                        @endforeach
