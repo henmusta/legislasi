@@ -49,7 +49,6 @@ class UserController extends Controller
                     <a href="#" class="btn btn-secondary" data-bs-toggle="dropdown">
                         Aksi <i class="mdi mdi-chevron-down"></i>
                     </a>
-
                     <div class="dropdown-menu" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);">
                         <a class="dropdown-item" href="users/' . $row->id . '/edit">Ubah</a>
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalReset" data-bs-id="' . $row->id . '" class="dropdown-item">Reset Password</a>
