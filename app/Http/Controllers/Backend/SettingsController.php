@@ -103,7 +103,7 @@ class SettingsController extends Controller
         $image = NULL;
         $dimensions = [array('300', '300', 'logo')];
         $dimensions_icon = [array('600', '600', 'logo')];
-        $dimensions_sidebar_logo = [array('633', '104', 'logo')];
+        $dimensions_sidebar_logo = [array('224', '66', 'logo')];
 
         try {
           DB::beginTransaction();

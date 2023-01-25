@@ -2,21 +2,21 @@
 
     <!-- LOGO -->
     <div class="navbar-brand-box">
-        <a href="{{ url('backend/dashboard') }}" class="logo logo-dark">
+        <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}" alt="" height="22">
+                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}" alt="" height="22">
             </span>
         </a>
 
-        <a href="{{ url('backend/dashboard') }}" class="logo logo-light">
+        <a href="index.html" class="logo logo-light">
             <span class="logo-lg">
-                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}" alt="" height="22">
+                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}" alt="" height="50">
             </span>
             <span class="logo-sm">
-                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}" alt="" height="22">
+                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
             </span>
         </a>
     </div>
