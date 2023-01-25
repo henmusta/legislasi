@@ -4,20 +4,21 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="{{ url('backend/dashboard') }}" class="logo logo-dark">
+                    <input type="text" id="logo" value="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}">
                     <span class="logo-sm">
-                        <img src="{{asset('assets/backend/images/logo-dark-sm.png')}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{asset('assets/backend/images/logo-dark-sm.png')}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
                     </span>
                 </a>
 
                 <a href="{{ url('backend/dashboard') }}" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="{{asset('assets/backend/images/logo-light.png')}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
                     </span>
                     <span class="logo-sm">
-                        <img src="{{asset('assets/backend/images/logo-light-sm.png')}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
                     </span>
                 </a>
             </div>

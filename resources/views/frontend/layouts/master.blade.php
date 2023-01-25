@@ -14,7 +14,7 @@
     <meta name="description" content="Fabrex - Multipurpose Business and Admin Template" />
 
     <!-- title  -->
-    <title>E-legislasi - Tanggamus</title>
+    <title>E-LEGISLASI - TANGGAMUS</title>
 
     <!-- favicon -->
 
@@ -77,7 +77,7 @@
                                         <li><a href="#!">E-SURVEY</a>
 
                                         </li>
-                                        <li><a href="#!">E-ASPIRASI</a>
+                                        <li><a href="/e-aspirasi">E-ASPIRASI</a>
 
                                         </li>
                                         <li><a href="#!">ABOUT</a>

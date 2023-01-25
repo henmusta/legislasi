@@ -68,37 +68,37 @@
 <section class="box-hover" data-background="{{ asset('assets/frontend/img/bg/bg6.jpg')}}" style="background-image: url({{ asset('assets/frontend/img/bg/bg6.jpg')}});">
     <div class="container">
         <div class="section-heading">
-            <h2>What We Offer</h2>
-            {{-- <p class="w-95 w-md-75 w-lg-55">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum Market.</p> --}}
+            <h2>--</h2>
+
         </div>
         <div class="position-relative">
             <div class="row mt-n4">
                 <div class="col-lg-4 mt-4">
-                    <a href="#">
+                    <a href="{{ url('e-legislasi') }}">
                         <div class="feature-box-01">
                             <i class="ti-world display-19"></i>
-                            <h3 class="display-28 mt-3">Market Analysis</h3>
-                            <p>We are leading international Business consulting all trouble with the law since the the day what might be right.</p>
+                            <h3 class="display-28 mt-3">E-LEGISLASI</h3>
+                            <p>Rancangan Undang-Undang (RUU) terkait otonomi daerah, hubungan pusat dan daerah.</p>
 
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 mt-4">
-                    <a href="#">
+                    <a href="{{ url('e-survey') }}">
                         <div class="feature-box-01">
                             <i class="ti-world display-19"></i>
-                            <h3 class="display-28 mt-3">Market Analysis</h3>
-                            <p>We are leading international Business consulting all trouble with the law since the the day what might be right.</p>
+                            <h3 class="display-28 mt-3">E-SURVEY</h3>
+                            <p>Tujuan survey adalah untuk memperoleh gambaran secara objektif mengenai tanggapan masyarakat.</p>
 
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 mt-4">
-                    <a href="#">
+                    <a href="{{ url('e-aspirasi') }}">
                         <div class="feature-box-01">
                             <i class="ti-world display-19"></i>
-                            <h3 class="display-28 mt-3">Market Analysis</h3>
-                            <p>We are leading international Business consulting all trouble with the law since the the day what might be right.</p>
+                            <h3 class="display-28 mt-3">E-ASPIRASI</h3>
+                            <p>Menampung Pendapat Baik Berupa Saran, Pertanyaan, Informasi dan Keluhan.</p>
 
                         </div>
                     </a>
@@ -114,7 +114,7 @@
         <div class="col-lg-6">
           <div class="about-text">
             <div class="section-heading left white">
-              <h4>Welcome To Our Consulting</h4>
+              <h4>E-LEGISLASI</h4>
             </div>
             <div class="inner-content">
                  <table class="table table-bordered" style="width:100%; color:#ffff;">
@@ -154,8 +154,8 @@
 
        <div class="container">
         <div class="section-heading">
-          <h2>What We Offer</h2>
-          <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum Market.</p>
+          <h2>Data Terbaru</h2>
+          <!-- <p class="w-95 w-md-75 w-lg-55 mx-auto">Business consulting excepteur sint occaecat cupidatat consulting non proident, sunt in culpa qui officia deserunt laborum Market.</p> -->
         </div>
         <div class="owl-carousel owl-theme owl-loaded owl-drag" id="services-carousel">
           <div class="owl-stage-outer">

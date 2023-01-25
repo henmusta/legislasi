@@ -6,12 +6,12 @@
 <head>
 
         <meta charset="utf-8" />
-        <title>Login | Borex - Admin & Dashboard Template</title>
+        <title>Login | {{Setting::get_setting()->name}}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/backend/images/favicon.ico">
+        <link rel="shortcut icon" href="{{URL::to('storage/images/logo/'.Setting::get_setting()->favicon)}}">
 
         <!-- Bootstrap Css -->
         <link href="{{asset('assets/backend/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -37,14 +37,14 @@
                                                     <div class="d-flex flex-column h-100">
                                                         <div class="mb-4 mb-md-5">
                                                             <a href="index-2.html" class="d-block auth-logo">
-                                                                <img src="assets/backend/images/logo-dark.png" alt="" height="22" class="auth-logo-dark me-start">
-                                                                <img src="assets/backend/images/logo-light.png" alt="" height="22" class="auth-logo-light me-start">
+                                                                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="60" class="auth-logo-dark me-start">
+                                                                <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="60" class="auth-logo-light me-start">
                                                             </a>
                                                         </div>
                                                         <div class="auth-content my-auto">
                                                             <div class="text-center">
-                                                                <h5 class="mb-0">Welcome Back !</h5>
-                                                                <p class="text-muted mt-2">Sign in to continue to Borex.</p>
+                                                                <h5 class="mb-0">Selamat Datang !</h5>
+                                                                <p class="text-muted mt-2">Sign in to continue to Admin Menu.</p>
                                                             </div>
                                                             <form class="custom-form mt-4 pt-2 login" method="POST" action="{{ route('backend.login') }}">
                                                                 @csrf

@@ -61,15 +61,8 @@ class FrontendLegislasiController extends Controller
       $tahapan = TahapanLegislasi::with(["agenda" => function($q) use($id){
         $q->where('agenda.legislasi_id', '=', $id);
        }])->get();
-    //   $tahapan = array();
-    //   foreach($tahapan as $key => $val){
-    //     $agenda = Agenda::with('agendafile')->where('tahapan_id', $val['id'])->where('legislasi_id', $legislasi['id']);
 
-    //     $tahapan[$key]['agenda'] = $agenda;
-    //   }
-
-    //   dd($tahapan);
-      $comment = Comment::where('legislasi_id', $legislasi['id'])->where('parent_id', '0')->get();
+      $comment = Comment::where('legislasi_id', $legislasi['id'])->where('parent_id', '0')->orderBy('id', 'desc')->get();
       foreach($comment as $key => $val){
         $comment[$key]['comment_child'] = Comment::where('parent_id', $val->id)->get();
       }
@@ -110,7 +103,7 @@ class FrontendLegislasiController extends Controller
                     'name' => $request['name'],
                     'email' => $request['email'],
                     'telp' => $request['telp'],
-                    'jabatan_id' => 2,
+                    'jabatan_id' => 7,
                 ]
             );
             $data = Comment::create([

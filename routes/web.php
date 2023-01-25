@@ -71,6 +71,10 @@ Route::get('/websocket', function() {
 });
 Route::get('backend/pengusul/select2', [Backend\PengusulController::class, 'select2'])->name('backend.pengusul.select2');
 Route::get('backend/tahapanlegislasi/select2', [Backend\TahapanLegislasiController::class, 'select2'])->name('backend.tahapanlegislasi.select2');
+Route::get('backend/kabupaten/select2', [Backend\KabupatenController::class, 'select2'])->name('backend.kabupaten.select2');
+Route::get('backend/kecamatan/select2', [Backend\KecamatanController::class, 'select2'])->name('backend.kecamatan.select2');
+Route::get('backend/dewan/select2', [Backend\DewanController::class, 'select2'])->name('backend.dewan.select2');
+Route::get('backend/skpd/select2', [Backend\SkpdController::class, 'select2'])->name('backend.skpd.select2');
 Route::middleware('auth:henmus')->group(function(){
   Route::prefix('backend')->name('backend.')->group(function(){
     Route::get('dashboard', [Backend\DashboardController::class, 'index'])->name('index');
@@ -93,10 +97,10 @@ Route::middleware('auth:henmus')->group(function(){
           Route::get('provinsi/select2', [Backend\ProvinsiController::class, 'select2'])->name('provinsi.select2');
           Route::resource('provinsi', Backend\ProvinsiController::class);
           //kabupaten
-          Route::get('kabupaten/select2', [Backend\KabupatenController::class, 'select2'])->name('kabupaten.select2');
+
           Route::resource('kabupaten', Backend\KabupatenController::class);
           //kecamatan
-          Route::get('kecamatan/select2', [Backend\KecamatanController::class, 'select2'])->name('kecamatan.select2');
+
           Route::resource('kecamatan', Backend\KecamatanController::class);
           //jabatan
           Route::get('jabatan/select2', [Backend\JabatanController::class, 'select2'])->name('jabatan.select2');
@@ -107,19 +111,19 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('kategoriranperda', Backend\KategoriRanperdaController::class);
 
           //pengusul
-        //   Route::get('pengusul/select2', [Backend\PengusulController::class, 'select2'])->name('pengusul.select2');
+
           Route::resource('pengusul', Backend\PengusulController::class);
 
           //dewan
-          Route::get('dewan/select2', [Backend\DewanController::class, 'select2'])->name('dewan.select2');
+
           Route::resource('dewan', Backend\DewanController::class);
 
           //skpd
-          Route::get('skpd/select2', [Backend\SkpdController::class, 'select2'])->name('skpd.select2');
+
           Route::resource('skpd', Backend\SkpdController::class);
 
           //statuslegislasi
-        //   Route::get('tahapanlegislasi/select2', [Backend\TahapanLegislasiController::class, 'select2'])->name('tahapanlegislasi.select2');
+
           Route::resource('tahapanlegislasi', Backend\TahapanLegislasiController::class);
 
 
@@ -129,12 +133,17 @@ Route::middleware('auth:henmus')->group(function(){
 
 
           //agenda
-
           Route::resource('agenda', Backend\AgendaController::class);
+
+          //aspirasi
+          Route::resource('aspirasi', Backend\AspirasiController::class);
+
 
           //sliderimage
           Route::resource('imageslider', Backend\SliderImageController::class);
 
 
+         //aspirasi
+          Route::resource('formaspirasi', Backend\FormAspirasiController::class);
   });
 });

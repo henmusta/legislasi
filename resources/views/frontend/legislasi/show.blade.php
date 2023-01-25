@@ -150,7 +150,8 @@
 
                                                                 @foreach ($val->agenda[0]['agendafile'] as $file)
                                                                       @php($file_html .= '<tr>
-                                                                                        <td>'.$file['name'].'</td>
+                                                                                        <td><a href="/storage/lampiran/'.$file['name'].'" download>'.$file['name'].'</a></td>
+                                                                                        <!-- <td>'.$file['name'].'</td> -->
                                                                                         <td>'.$file['keterangan'].'</td>
                                                                                     </tr>')
                                                                 @endforeach
@@ -219,7 +220,7 @@
 
                                                        @foreach ($val->agenda[$i]['agendafile'] as $file)
                                                              @php($file_html .= '<tr>
-                                                                               <td>'.$file['name'].'</td>
+                                                                               <td><a href="/storage/lampiran/'.$file['name'].'" download>'.$file['name'].'</a></td>
                                                                                <td>'.$file['keterangan'].'</td>
                                                                            </tr>')
                                                        @endforeach
@@ -364,26 +365,26 @@
                                                                                 <input type="hidden" name="legislasi_id" value="{{Request::segment(2)}}">
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" name="name" placeholder="Masukan Nama">
+                                                                                        <input type="text" class="form-control" id="fd_name" name="name" placeholder="Masukan Nama">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <input type="email" class="form-control" name="email" placeholder="Masukan Email">
+                                                                                        <input type="email" class="form-control" id="fd_email" name="email" placeholder="Masukan Email">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" name="nik" placeholder="Masukan NIk">
+                                                                                        <input type="text" class="form-control" id="fd_nik" name="nik" placeholder="Masukan NIk">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6">
                                                                                     <div class="form-group">
-                                                                                        <input type="text" class="form-control" name="telp" placeholder="Masukan No Telp">
+                                                                                        <input type="text" class="form-control" id="fd_telp" name="telp" placeholder="Masukan No Telp">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <textarea name="comment" rows="6" class="form-control h-100" placeholder="Masukan Feedback"></textarea>
+                                                                                    <textarea name="comment" rows="6" class="form-control h-100" id="fd_comment" placeholder="Masukan Feedback"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div>
@@ -910,6 +911,15 @@ $(document).ready(function () {
             if (response.status === "success") {
               let comment =  response.data;
               console.log(comment);
+<<<<<<< HEAD
+=======
+              $('#fd_name').val('');
+              $('#fd_email').val('');
+              $('#fd_nik').val('');
+              $('#fd_telp').val('');
+              $('#fd_comment').val('');
+              toastr.success('Feedback Terkirim', 'Success !');
+>>>>>>> d6e6d2b2525c60c84740e6c16d870e1fed03edc0
               let html = '<div class="comments-area">'+
                             '<div class="title-g mb-4">'+
                             '</div>'+
@@ -930,7 +940,7 @@ $(document).ready(function () {
                             '</div>'+
                          '</div>';
             let chatBody = document.querySelector("#chat-area");
-            chatBody.insertAdjacentHTML("beforeend", html);
+            chatBody.insertAdjacentHTML("afterbegin", html);
             chatBody.scrollTo({
                 left: 0,
                 top: chatBody.scrollHeight,

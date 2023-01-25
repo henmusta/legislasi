@@ -72,6 +72,20 @@ class Fileupload
     }
   }
 
+  // public static function uploadFile($file, $filePath = 'lampiran', $fileName = NULL)
+  // {
+  //   if (request()->hasFile($file)) {
+  //     $file = request()->file($file);
+  //     $ext = $file->getClientOriginalExtension();
+  //     $fileName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '_' . Carbon::now()->timestamp) . '.' . $ext;
+  //     if (!File::isDirectory("$filePath")) {
+  //       File::makeDirectory("$filePath", 0755, true);
+  //     }
+  //     Storage::disk('public')->putFileAs($filePath, $file, $fileName);
+  //   }
+  //   return $fileName;
+  // }
+
   public static function uploadFileMultiple($file, $filePath = 'lampiran', $fileName = NULL)
   {
 
