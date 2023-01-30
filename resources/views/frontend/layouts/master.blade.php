@@ -74,7 +74,7 @@
                                         <li><a href="/e-legislasi">E-LEGISLASI</a>
 
                                         </li>
-                                        <li><a href="#!">E-SURVEY</a>
+                                        <li><a href="/e-survey">E-SURVEY</a>
 
                                         </li>
                                         <li><a href="/e-aspirasi">E-ASPIRASI</a>

@@ -110,7 +110,7 @@ class FrontendLegislasiController extends Controller
                 'user_id' => $user['id'],
                 'legislasi_id' => $request['legislasi_id'],
                 'nik' => $request['nik'],
-                'name' => $request['name'],
+                'name' => ucwords($request['name']),
                 'email' => $request['email'],
                 'telp' => $request['telp'],
                 'comment' => $request['comment'],

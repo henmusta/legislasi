@@ -50,6 +50,7 @@ Route::resource('/home', Frontend\HomeController::class);
 Route::get('e-legislasi/countlegislasi', [Frontend\FrontendLegislasiController::class, 'countlegislasi'])->name('e-legislasi.countlegislasi');
 Route::resource('/e-legislasi', Frontend\FrontendLegislasiController::class);
 Route::resource('/e-aspirasi', Frontend\FrontendAspirasiController::class);
+Route::resource('/e-survey', Frontend\FrontendSurveyController::class);
 // Route::get('/', function () {
 //     return redirect()->route('backend.login');
 //   });
@@ -110,6 +111,11 @@ Route::middleware('auth:henmus')->group(function(){
           Route::get('kategoriranperda/select2', [Backend\KategoriRanperdaController::class, 'select2'])->name('kategoriranperda.select2');
           Route::resource('kategoriranperda', Backend\KategoriRanperdaController::class);
 
+
+          //kategorisurvey
+          Route::get('kategorisurvey/select2', [Backend\KategoriSurveyController::class, 'select2'])->name('kategorisurvey.select2');
+          Route::resource('kategorisurvey', Backend\KategoriSurveyController::class);
+
           //pengusul
 
           Route::resource('pengusul', Backend\PengusulController::class);
@@ -140,10 +146,21 @@ Route::middleware('auth:henmus')->group(function(){
           //sliderimage
           Route::resource('imageslider', Backend\SliderImageController::class);
 
-         //aspirasi
+          //formaspirasi
           Route::resource('formaspirasi', Backend\FormAspirasiController::class);
 
-            //aspirasi
+          //feedbacck
           Route::resource('feedback', Backend\CommentController::class);
+
+          //survey
+          Route::get('survey/select2', [Backend\SurveyController::class, 'select2'])->name('survey.select2');
+          Route::resource('survey', Backend\SurveyController::class);
+
+
+          //question
+          Route::resource('question', Backend\QuestionController::class);
+
+          //question
+          Route::resource('partisipan', Backend\ParticipantsController::class);
   });
 });

@@ -8,20 +8,12 @@
 
                 <div class="row">
                     <div class="col-md-12">
-<<<<<<< HEAD
                         <h1>E-Aspirasi</h1>
-=======
-                        <h1>E-legislasi</h1>
->>>>>>> d6e6d2b2525c60c84740e6c16d870e1fed03edc0
                     </div>
                     <div class="col-md-12">
                         <ul class="ps-0">
                             <li><a href="home-default.html">Home</a></li>
-<<<<<<< HEAD
                             <li><a href="#!">E-Aspirasi</a></li>
-=======
-                            <li><a href="#!">E-legislasi</a></li>
->>>>>>> d6e6d2b2525c60c84740e6c16d870e1fed03edc0
                         </ul>
                     </div>
                 </div>

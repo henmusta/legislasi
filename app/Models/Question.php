@@ -5,18 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class Question extends Model
 {
     use HasFactory;
-    protected $table = 'survey';
+    protected $table = 'question';
     protected $fillable = [
      'kategorisurvey_id',
-     'name',
-     'deskripsi',
+     'survey_id',
+     'question',
+     'a',
+     'b',
+     'c',
+     'd',
+     'e',
    ];
 
    public function kategorisurvey()
    {
      return $this->belongsTo(KategoriSurvey::class, 'kategorisurvey_id');
+   }
+
+   public function survey()
+   {
+     return $this->belongsTo(Survey::class, 'survey_id');
    }
 }

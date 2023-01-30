@@ -45,7 +45,7 @@ class UserController extends Controller
       return DataTables::of($data)
         ->addIndexColumn()
         ->addColumn('action', function ($row) {
-            return '<div class="dropdown">
+        return '<div class="dropdown">
                     <a href="#" class="btn btn-secondary" data-bs-toggle="dropdown">
                         Aksi <i class="mdi mdi-chevron-down"></i>
                     </a>
