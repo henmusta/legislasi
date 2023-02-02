@@ -26,7 +26,7 @@ class CommentController extends Controller
           ['url' => '#', 'title' => "Data Feedback"],
         ];
         if ($request->ajax()) {
-          $data = Comment::with('legislasi');
+          $data = Comment::with('legislasi')->select('comment.*');
         //   ->when( $legislasi_id, function ($query,   $legislasi_id) {
         //     return $query->where('legislasi_id',  $legislasi_id);
         //   });

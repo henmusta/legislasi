@@ -30,7 +30,7 @@ class AgendaController extends Controller
         ];
         if ($request->ajax()) {
           $legislasi_id =  $request['legislasi_id'];
-          $data = Agenda::with('tahapan','legislasi')
+          $data = Agenda::with('tahapan','legislasi')->select('agenda.*')
           ->when( $legislasi_id, function ($query,   $legislasi_id) {
             return $query->where('legislasi_id',  $legislasi_id);
           });

@@ -85,7 +85,7 @@ tr.group:hover {
 </style>
 @endsection
 @section('script')
-
+<script src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
 
   <script>
 
@@ -93,7 +93,7 @@ tr.group:hover {
 
       let modalDelete = document.getElementById('modalDelete');
       const bsDelete = new bootstrap.Modal(modalDelete);
-      var groupColumn = 1;
+      var collapsedGroups = {};
       let dataTable = $('#Datatable').DataTable({
         responsive: true,
         scrollX: false,
@@ -125,29 +125,32 @@ tr.group:hover {
           {data: 'e', name: 'e'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
-        columnDefs: [
-        { visible: false, targets: groupColumn }
-        ],
-        drawCallback: function (settings) {
-            var api = this.api();
-            var rows = api.rows({ page: 'current' }).nodes();
-            var last = null;
+        rowGroup: {
+            dataSrc: 'survey.name',
+                startRender: function(rows, group) {
+                var collapsed = !!collapsedGroups[group];
 
-            api
-                .column(groupColumn, { page: 'current' })
-                .data()
-                .each(function (group, i) {
-                    if (last !== group) {
-                        $(rows)
-                            .eq(i)
-                            .before('<tr class="group"><td colspan="8" >' + group + '</td></tr>');
-                        last = group;
+                rows.nodes().each(function(r) {
+                    r.style.display = 'none';
+                    if (collapsed) {
+                        r.style.display = '';
                     }
-                });
-        },
+                })
+
+                // Add category name to the <tr>. NOTE: Hardcoded colspan
+                return $('<tr/>')
+                .append('<td colspan="9">' + group + ' (' + rows.count() + ')</td>')
+                .attr('data-name', group)
+                .toggleClass('collapsed', collapsed);
+            }
+         }
       });
 
-
+      $('#Datatable tbody').on('click', 'tr.group-start', function() {
+        var judul = $(this).data('name');
+        collapsedGroups[judul] = !collapsedGroups[judul];
+        dataTable.draw(false);
+      });
       modalDelete.addEventListener('show.bs.modal', function (event) {
         let button = event.relatedTarget;
         let id = button.getAttribute('data-bs-id');

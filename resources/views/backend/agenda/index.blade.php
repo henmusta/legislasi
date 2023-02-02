@@ -82,7 +82,7 @@ tr.group:hover {
 </style>
 @endsection
 @section('script')
-
+<script src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
 
   <script>
 
@@ -90,13 +90,13 @@ tr.group:hover {
 
       let modalDelete = document.getElementById('modalDelete');
       const bsDelete = new bootstrap.Modal(modalDelete);
-      var groupColumn = 1;
+      var collapsedGroups = {};
       let dataTable = $('#Datatable').DataTable({
         responsive: true,
         scrollX: false,
         processing: true,
         serverSide: true,
-        order: [[0, 'desc']],
+        order: [[1, 'desc']],
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         pageLength: 10,
         ajax: {
@@ -119,27 +119,35 @@ tr.group:hover {
           {data: 'tahapan.name', name: 'tahapan.name'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
-        columnDefs: [
-        { visible: false, targets: groupColumn }
-        ],
-        drawCallback: function (settings) {
-            var api = this.api();
-            var rows = api.rows({ page: 'current' }).nodes();
-            var last = null;
+        rowGroup: {
+      // Uses the 'row group' plugin
+            dataSrc: 'legislasi.judul',
+            startRender: function(rows, group) {
+                var collapsed = !!collapsedGroups[group];
 
-            api
-                .column(groupColumn, { page: 'current' })
-                .data()
-                .each(function (group, i) {
-                    if (last !== group) {
-                        $(rows)
-                            .eq(i)
-                            .before('<tr class="group"><td colspan="5" >' + group + '</td></tr>');
-                        last = group;
+                rows.nodes().each(function(r) {
+                    r.style.display = 'none';
+                    if (collapsed) {
+                        r.style.display = '';
                     }
-                });
-        },
+                })
+
+                // Add category name to the <tr>. NOTE: Hardcoded colspan
+                return $('<tr/>')
+                .append('<td colspan="6">' + group + ' (' + rows.count() + ')</td>')
+                .attr('data-name', group)
+                .toggleClass('collapsed', collapsed);
+            }
+         }
+      })
+      $('#Datatable tbody').on('click', 'tr.group-start', function() {
+        var judul = $(this).data('name');
+        collapsedGroups[judul] = !collapsedGroups[judul];
+        dataTable.draw(false);
       });
+    //    $('#Datatable tbody').on('click', 'tr.tr-collapse', function() {
+
+	//     });
 
 
       modalDelete.addEventListener('show.bs.modal', function (event) {

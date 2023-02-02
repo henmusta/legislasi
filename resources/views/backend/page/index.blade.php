@@ -13,7 +13,12 @@
                     <div class="flex-grow-1">
                         {{-- <h5 class="card-title mb-3">Transaction</h5> --}}
                     </div>
-
+                    <div class="flex-shrink-0">
+                        <a class="btn btn-primary " href="{{ route('backend.page.create') }}">
+                            Tambah
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -23,10 +28,9 @@
                         <thead>
                             <tr>
                                 <th width="5%">No</th>
-                                <th>Survey</th>
-                                <th>Nik</th>
                                 <th>Name</th>
-                                <th width="10%">Aksi</th>
+                                <th>Judul</th>
+                                <th>Aksi</th>
                               </tr>
                         </thead>
                         <tbody>
@@ -68,14 +72,15 @@
 
 @section('css')
 <style>
-    tr.group,
-    tr.group:hover {
-        background-color: #ddd !important;
-    }
+
+tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
 </style>
 @endsection
 @section('script')
-<script src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
+
 
   <script>
 
@@ -83,7 +88,7 @@
 
       let modalDelete = document.getElementById('modalDelete');
       const bsDelete = new bootstrap.Modal(modalDelete);
-      var collapsedGroups = {};
+
       let dataTable = $('#Datatable').DataTable({
         responsive: true,
         scrollX: false,
@@ -93,7 +98,7 @@
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         pageLength: 10,
         ajax: {
-          url: "{{ route('backend.partisipan.index') }}",
+          url: "{{ route('backend.page.index') }}",
           data: function (d) {
             // d.status = $('#Select2Status').find(':selected').val();
           }
@@ -106,41 +111,21 @@
                     return meta.row + meta.settings._iDisplayStart + 1;
                 }
           },
-          {data: 'survey.name', name: 'survey.name'},
-          {data: 'nik', name: 'nik'},
           {data: 'name', name: 'name'},
+          {data: 'judul', name: 'judul'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
-        rowGroup: {
-            dataSrc: 'survey.name',
-                startRender: function(rows, group) {
-                var collapsed = !!collapsedGroups[group];
+        columnDefs: [
 
-                rows.nodes().each(function(r) {
-                    r.style.display = 'none';
-                    if (collapsed) {
-                        r.style.display = '';
-                    }
-                })
+        ],
 
-                // Add category name to the <tr>. NOTE: Hardcoded colspan
-                return $('<tr/>')
-                .append('<td colspan="5">' + group + ' (' + rows.count() + ')</td>')
-                .attr('data-name', group)
-                .toggleClass('collapsed', collapsed);
-            }
-         }
       });
 
-      $('#Datatable tbody').on('click', 'tr.group-start', function() {
-        var judul = $(this).data('name');
-        collapsedGroups[judul] = !collapsedGroups[judul];
-        dataTable.draw(false);
-      });
+
       modalDelete.addEventListener('show.bs.modal', function (event) {
         let button = event.relatedTarget;
         let id = button.getAttribute('data-bs-id');
-        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.partisipan.index") }}/' + id);
+        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.page.index") }}/' + id);
       });
       modalDelete.addEventListener('hidden.bs.modal', function (event) {
         this.querySelector('.urlDelete').setAttribute('href', '');

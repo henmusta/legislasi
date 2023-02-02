@@ -51,6 +51,8 @@ Route::get('e-legislasi/countlegislasi', [Frontend\FrontendLegislasiController::
 Route::resource('/e-legislasi', Frontend\FrontendLegislasiController::class);
 Route::resource('/e-aspirasi', Frontend\FrontendAspirasiController::class);
 Route::resource('/e-survey', Frontend\FrontendSurveyController::class);
+// Route::resource('/e-pages/{id}', Frontend\FrontendPagesController::class);
+Route::get('/e-pages/{name}', [Frontend\FrontendPagesController::class, 'index'])->name('e-pages.index');
 // Route::get('/', function () {
 //     return redirect()->route('backend.login');
 //   });
@@ -162,5 +164,8 @@ Route::middleware('auth:henmus')->group(function(){
 
           //question
           Route::resource('partisipan', Backend\ParticipantsController::class);
+
+          //question
+          Route::resource('page', Backend\PagesController::class);
   });
 });
