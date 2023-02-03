@@ -170,7 +170,7 @@
                             </div>
                             <div class="service-content-box">
                             <h3>
-                                <a href="#!">{{$val->judul}}</a>
+                                <a href="e-legislasi/{{$val->id}}">{{$val->judul}}</a>
                             </h3>
                             </div>
                         </div>

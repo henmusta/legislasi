@@ -36,7 +36,7 @@
                         <div class="owl-item" style="width: 400px;">
                             <article class="blog-grid-simple">
                               <h3>
-                                <a href="#!">{{$val['name']}}</a>
+                                <a href="e-survey/{{$val['id']}}/edit">{{$val['name']}}</a>
                               </h3>
                               {!!$val['deskripsi']!!}
                               <div class="blog-grid-simple-content">

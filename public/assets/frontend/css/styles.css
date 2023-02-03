@@ -1,4 +1,5 @@
-﻿#preloader {
+﻿@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+#preloader {
     position: fixed;
     top: 0;
     right: 0;
@@ -118,7 +119,7 @@
     content: "\f105";
     font-size: 16px;
     vertical-align: top;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     padding-left: 8px;
     vertical-align: middle;
   }
@@ -662,7 +663,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
   }
   .list-style-4 li:last-child {
     border-bottom: 0;
@@ -689,7 +690,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #c0c0c0;
   }
   .list-style-5 li:first-child {
@@ -862,7 +863,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #c0c0c0;
   }
   .list-style-13 li:first-child {
@@ -890,7 +891,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #c0c0c0;
   }
   .list-style-14 li:first-child {
@@ -919,7 +920,7 @@
   }
   .list-style-16 li:after {
     content: "\f14a";
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     position: absolute;
     left: 0px;
     top: 1px;
@@ -1605,7 +1606,7 @@
     font-weight: 700;
     vertical-align: middle;
     color: #fff;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     padding: 0 8px 0 10px;
     font-size: 12px;
   }
@@ -1670,7 +1671,7 @@
     font-weight: 700;
     vertical-align: middle;
     color: #fff;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     padding: 0 5px 0 10px;
     font-size: 12px;
   }
@@ -1727,7 +1728,7 @@
     content: " \f152";
     color: #fff;
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     padding: 0 10px;
   }
   .page-title-section3 ul li:last-child:after {
@@ -1766,7 +1767,7 @@
     content: " \f152";
     color: #fff;
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     padding: 0 10px;
   }
   .page-title-section.small ul li:last-child:after {
@@ -2453,7 +2454,7 @@
     content: "\f0da";
     font-weight: 700;
     font-size: 14px;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #232323;
     margin-left: 7px;
     -webkit-transition-duration: 0.3s;
@@ -2542,7 +2543,7 @@
     content: "\f0da";
     font-size: 15px;
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #86bc42;
     margin-left: 10px;
     -webkit-transition-duration: 0.3s;
@@ -4041,7 +4042,7 @@
     margin: auto auto 15px;
     content: "\f10d";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #86bc42;
     font-size: 23px;
     display: block;
@@ -4164,7 +4165,7 @@
   .testimonial-style3 .testimonial-pic:before {
     content: "\f10d";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     display: block;
     position: absolute;
     top: 50%;
@@ -4435,7 +4436,7 @@
     margin: auto auto 15px;
     content: "\f10d";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #86bc42;
     font-size: 23px;
     display: block;
@@ -4556,7 +4557,7 @@
   .testimonial-style3 .testimonial-pic:before {
     content: "\f10d";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     display: block;
     position: absolute;
     top: 50%;
@@ -6809,7 +6810,7 @@
   .price-table-content ul li:before {
     content: "\f00c";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     display: inline-block;
     color: #86bc42;
     margin-right: 12px;
@@ -7276,12 +7277,12 @@
   }
   @media screen and (max-width: 991px) {
     .categories .collapse-sm:after {
-      font-family: Font Awesome\5 Free;
+        font-family: "Font Awesome 5 Free";
       content: "\f105";
       float: right;
     }
     .categories .collapse-sm.current:after {
-      font-family: Font Awesome\5 Free;
+        font-family: "Font Awesome 5 Free";
       content: "\f107";
       float: right;
     }
@@ -7745,7 +7746,7 @@
     content: "\f105";
     font-size: 14px;
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #86bc42;
     margin-left: 10px;
     -webkit-transition-duration: 0.3s;
@@ -9069,7 +9070,7 @@
     content: "\f105";
     font-weight: 700;
     vertical-align: bottom;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: rgba(255, 255, 255, 0.85);
     padding-right: 8px;
     -webkit-transition-duration: 0.3s;
@@ -9103,7 +9104,7 @@
   .footer-list-style2 li a:before {
     content: "\f105";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #fff;
     padding-right: 8px;
     -webkit-transition-duration: 0.3s;
@@ -9134,7 +9135,7 @@
   .footer-list-style3 li a:before {
     content: "\f105";
     font-weight: 700;
-    font-family: Font Awesome\5 Free;
+    font-family: "Font Awesome 5 Free";
     color: #6f6f6f;
     padding-right: 8px;
     -webkit-transition-duration: 0.3s;

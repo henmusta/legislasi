@@ -4,8 +4,8 @@
 
             <div class="col-lg-5 col-md-6 mt-1-9">
 
-                <img alt="footer-logo" width="50px" height="50px" src="{{ asset('assets/frontend/img/tanggamus.png')}}">
-                <p class="mt-4 text-light-gray">Nemo enim enim voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
+                <img alt="footer-logo" width="50px" height="50px" src="{{URL::to('storage/images/logo/'.SettingFront::get_setting()->icon)}}">
+                <p class="mt-4 text-light-gray">{!!Footer::get_footer()['about']->deskripsi!!}</p>
 
 
             </div>
@@ -13,11 +13,11 @@
             <div class="col-lg-2 col-md-6 mt-1-9">
                 <h3 class="text-white">Menu</h3>
                 <ul class="footer-list ps-0">
-                    <li><a href="#!">HOME</a></li>
-                    <li><a href="#!">E-LEGISLASI</a></li>
-                    <li><a href="#!">E-SURVEY</a></li>
-                    <li><a href="#!">E-ASPIRASI</a></li>
-                    <li><a href="#!">ABOUT</a></li>
+                    <li><a href="home">HOME</a></li>
+                    <li><a href="e-legislasi">E-LEGISLASI</a></li>
+                    <li><a href="e-survey">E-SURVEY</a></li>
+                    <li><a href="e-aspirasi">E-ASPIRASI</a></li>
+                    <li><a href="e-pages/about">ABOUT</a></li>
                 </ul>
             </div>
 

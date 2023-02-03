@@ -61,7 +61,7 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- logo -->
-                                        <a href="index-2.html" class="navbar-brand"><img id="logo" src="{{ asset('assets/frontend/img/tanggamus.png') }}" alt="logo"></a>
+                                        <a href="index-2.html" class="navbar-brand"><img  id="logo" src="{{URL::to('storage/images/logo/'.SettingFront::get_setting()->sidebar_logo)}}" alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
 
@@ -80,7 +80,7 @@
                                         <li><a href="/e-aspirasi">E-ASPIRASI</a>
 
                                         </li>
-                                        <li><a href="#!">ABOUT</a>
+                                        <li><a href="/e-pages/about">ABOUT</a>
 
                                         </li>
 

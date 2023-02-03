@@ -94,6 +94,7 @@ Route::middleware('auth:henmus')->group(function(){
     Route::resource('menu', Backend\MenuManagerController::class)->except('create', 'show');
     Route::post('menu/changeHierarchy', [Backend\MenuManagerController::class, 'changeHierarchy'])->name('menu.changeHierarchy');
     Route::resource('settings', Backend\SettingsController::class);
+    Route::resource('settingsfront', Backend\FrontendSettingsController::class);
 
 
           //provinsi

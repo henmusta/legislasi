@@ -22,7 +22,8 @@
 
     <!-- theme core css -->
     <link href="{{asset('assets/frontend/css/styles.css')}}" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet">
+    {{-- <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">

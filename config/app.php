@@ -197,6 +197,7 @@ return [
 
 
         App\Providers\SettingServiceProvider::class,
+        App\Providers\SettingFrontServiceProvider::class,
         App\Providers\FooterServiceProvider::class,
     ],
 
@@ -258,6 +259,7 @@ return [
         // 'Captcha' => Mews\Captcha\Facades\Captcha::class,
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
         'Setting'    => App\Helpers\Setting::class,
+        'SettingFront'    => App\Helpers\SettingFront::class,
         'Footer'    => App\Helpers\Footer::class,
     ])->toArray(),
 
