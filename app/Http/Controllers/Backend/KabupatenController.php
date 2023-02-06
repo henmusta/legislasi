@@ -115,6 +115,7 @@ class KabupatenController extends Controller
       $offset = ($page - 1) * $resultCount;
       $provinsi_id = $request['provinsi_id'];
       $data = Kabupaten::where('name', 'LIKE', '%' . $request->q . '%')
+
         ->when($provinsi_id, function ($query, $provinsi_id) {
         return $query->where('provinsi_id', $provinsi_id);
         })

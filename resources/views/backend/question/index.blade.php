@@ -27,14 +27,9 @@
                     <table id="Datatable" class="table table-bordered border-bottom w-100" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="5%">No</th>
+                                {{-- <th width="5%">No</th> --}}
                                 <th>Survey</th>
                                 <th>Pertanyaan</th>
-                                <th>Opsi A</th>
-                                <th>Opsi B</th>
-                                <th>Opsi C</th>
-                                <th>Opsi D</th>
-                                <th>Opsi E</th>
                                 <th>Aksi</th>
                               </tr>
                         </thead>
@@ -110,19 +105,14 @@ tr.group:hover {
         },
 
         columns: [
-          {
-                data: "id", name:'id',
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-          },
+        //   {
+        //         data: "id", name:'id',
+        //         render: function (data, type, row, meta) {
+        //             return meta.row + meta.settings._iDisplayStart + 1;
+        //         }
+        //   },
           {data: 'survey.name', name: 'survey.name'},
           {data: 'question', name: 'question'},
-          {data: 'a', name: 'a'},
-          {data: 'b', name: 'b'},
-          {data: 'c', name: 'c'},
-          {data: 'd', name: 'd'},
-          {data: 'e', name: 'e'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         rowGroup: {
@@ -139,11 +129,12 @@ tr.group:hover {
 
                 // Add category name to the <tr>. NOTE: Hardcoded colspan
                 return $('<tr/>')
-                .append('<td colspan="9">' + group + ' (' + rows.count() + ')</td>')
+                .append('<td colspan="3">' + group + ' (' + rows.count() + ')</td>')
                 .attr('data-name', group)
                 .toggleClass('collapsed', collapsed);
             }
          }
+
       });
 
       $('#Datatable tbody').on('click', 'tr.group-start', function() {
@@ -154,7 +145,7 @@ tr.group:hover {
       modalDelete.addEventListener('show.bs.modal', function (event) {
         let button = event.relatedTarget;
         let id = button.getAttribute('data-bs-id');
-        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.agenda.index") }}/' + id);
+        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.question.index") }}/' + id);
       });
       modalDelete.addEventListener('hidden.bs.modal', function (event) {
         this.querySelector('.urlDelete').setAttribute('href', '');

@@ -68,7 +68,7 @@ class LegislasiController extends Controller
         // dd($request);
           $validator = Validator::make($request->all(), [
             'tahapan_id' => 'required|integer',
-            'keterangan' => 'required',
+            // 'keterangan' => 'required',
             'pengusul_id' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
@@ -77,7 +77,7 @@ class LegislasiController extends Controller
           if ($validator->passes()) {
             $data = Legislasi::create([
                 'tahapan_id' => $request['tahapan_id'],
-                'keterangan'  => $request['keterangan'],
+                'keterangan'  => '-',
                 'pengusul_id' => $request['pengusul_id'],
                 'judul' => $request['judul'],
                 'deskripsi' => $request['deskripsi'],
@@ -86,7 +86,7 @@ class LegislasiController extends Controller
                 $tahapan = LegislasiTahapanLegislasi::create([
                     'legislasi_id' => $data['id'],
                     'tahapan_legislasi_id'  =>   $request['tahapan_id'],
-                    'keterangan' => $request['keterangan'],
+                    'keterangan' => '-',
                 ]);
 
             }
@@ -139,7 +139,7 @@ class LegislasiController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tahapan_id' => 'required|integer',
-            'keterangan' => 'required',
+            // 'keterangan' => 'required',
             'pengusul_id' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
@@ -150,7 +150,7 @@ class LegislasiController extends Controller
                 $data = Legislasi::find($id);
                 $data->update([
                     'tahapan_id' => $request['tahapan_id'],
-                    'keterangan'  => $request['keterangan'],
+                    'keterangan'  => '-',
                     'pengusul_id' => $request['pengusul_id'],
                     'judul' => $request['judul'],
                     'deskripsi' => $request['deskripsi'],
@@ -159,7 +159,7 @@ class LegislasiController extends Controller
                     $tahapan = LegislasiTahapanLegislasi::create([
                         'legislasi_id' => $id,
                         'tahapan_legislasi_id'  => $request['tahapan_id'],
-                        'keterangan' => $request['keterangan'],
+                        'keterangan' => '-',
                     ]);
                 }
                 DB::commit();

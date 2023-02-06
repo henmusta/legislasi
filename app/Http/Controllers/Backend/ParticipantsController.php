@@ -63,9 +63,9 @@ class ParticipantsController extends Controller
       $data = [
         'partisipan' => $partisipan,
         'partisipandetail' => $partisipandetail,
-        // // 'legislasi' =>$agenda['legislasi'],
-        // 'file' =>$file
       ];
+
+    //   dd($data);
 
       return view('backend.partisipan.show', compact('page_breadcrumbs', 'config', 'data'));
     }

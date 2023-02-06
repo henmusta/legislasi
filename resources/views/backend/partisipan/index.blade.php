@@ -22,7 +22,7 @@
                     <table id="Datatable" class="table table-bordered border-bottom w-100" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="5%">No</th>
+                                {{-- <th width="5%">No</th> --}}
                                 <th>Survey</th>
                                 <th>Nik</th>
                                 <th>Name</th>
@@ -100,12 +100,12 @@
         },
 
         columns: [
-          {
-                data: "id", name:'id',
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-          },
+        //   {
+        //         data: "id", name:'id',
+        //         render: function (data, type, row, meta) {
+        //             return meta.row + meta.settings._iDisplayStart + 1;
+        //         }
+        //   },
           {data: 'survey.name', name: 'survey.name'},
           {data: 'nik', name: 'nik'},
           {data: 'name', name: 'name'},
@@ -125,7 +125,7 @@
 
                 // Add category name to the <tr>. NOTE: Hardcoded colspan
                 return $('<tr/>')
-                .append('<td colspan="5">' + group + ' (' + rows.count() + ')</td>')
+                .append('<td colspan="4">' + group + ' (' + rows.count() + ')</td>')
                 .attr('data-name', group)
                 .toggleClass('collapsed', collapsed);
             }

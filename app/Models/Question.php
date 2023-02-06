@@ -13,11 +13,6 @@ class Question extends Model
      'kategorisurvey_id',
      'survey_id',
      'question',
-     'a',
-     'b',
-     'c',
-     'd',
-     'e',
    ];
 
    public function kategorisurvey()
@@ -27,6 +22,17 @@ class Question extends Model
 
    public function survey()
    {
-     return $this->belongsTo(Survey::class, 'survey_id');
+     return $this->belongsTo(Survey::class, 'survey_id')->withCount('partisipan');
    }
+
+   public function partisipandetail()
+   {
+     return $this->hasMany(AgendaFile::class);
+   }
+
+   public function questiondetail()
+   {
+     return $this->hasMany(QuestionDetail::class);
+   }
+
 }

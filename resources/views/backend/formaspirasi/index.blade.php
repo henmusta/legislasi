@@ -13,12 +13,7 @@
                     <div class="flex-grow-1">
                         {{-- <h5 class="card-title mb-3">Transaction</h5> --}}
                     </div>
-                    <div class="flex-shrink-0">
-                        <a class="btn btn-primary " href="{{ route('backend.formaspirasi.create') }}">
-                            Tambah
-                            <i class="fas fa-plus"></i>
-                        </a>
-                    </div>
+
                 </div>
 
             </div>

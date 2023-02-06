@@ -168,5 +168,17 @@ Route::middleware('auth:henmus')->group(function(){
 
           //question
           Route::resource('page', Backend\PagesController::class);
+
+          //question
+          Route::get('laporansurvey/countsurvey', [Backend\LaporanSurveyController::class, 'countsurvey'])->name('LaporanSurvey.countadmin');
+          Route::resource('laporansurvey', Backend\LaporanSurveyController::class);
+
+            //question
+          Route::resource('laporanaspirasi', Backend\LaporanAspirasiController::class);
+
+              //question
+
+          Route::resource('laporanlegislasi', Backend\LaporanLegislasiController::class);
+
   });
 });

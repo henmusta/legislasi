@@ -66,30 +66,32 @@
                                         <div class="flex-grow-1">
                                             <div>
                                                 <h5>{!! $val['question']['question'] !!}</h5>
+                                                {{-- {{dd($val)}} --}}
                                                 <ul class="ps-0">
-                                                    <li class="active step_{{$val['question']['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
-                                                    <input type="radio" id="opt_1{{$val['question']['id']}}"   value="a" {{ $val['answer'] == 'a' ? 'checked' : 'disabled' }}>
-                                                    <label for="opt_1">{{$val['question']['a']}}</label>
+
+                                                    @foreach ($val['question']['questiondetail'] as $i)
+                                                    <li class="active step_{{$i['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
+                                                        <input type="radio" id="opt_1{{$i['id']}}"   value="b" {{ $val['answer'] == $i['answer'] ? 'checked' : 'disabled' }}>
+                                                        <label for="opt_1">{{$i['deskripsi']}}</label>
                                                     </li>
-                                                    <li class="step_{{$val['question']['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
-                                                    <input type="radio" id="opt_2{{$val['question']['id']}}"  value="b"  {{ $val['answer'] == 'b' ? 'checked' : 'disabled' }}>
-                                                    <label for="opt_2">{{$val['question']['b']}}</label>
+
+                                                    @endforeach
+
+
+                                                    {{-- <li class="active step_{{$val['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
+                                                        <input type="radio" id="opt_1{{$val['id']}}"   value="b" {{ $val['answer'] == 'b' ? 'checked' : 'disabled' }}>
+                                                        <label for="opt_1">{{$val['deskripsi']}}</label>
                                                     </li>
-                                                    <li class="step_{{$val['question']['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
-                                                    <input type="radio" id="opt_3{{$val['question']['id']}}"  value="c"  {{ $val['answer'] == 'c' ? 'checked' : 'disabled' }}>
-                                                    <label for="opt_3">{{$val['question']['c']}}</label>
+                                                    <li class="active step_{{$val['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
+                                                        <input type="radio" id="opt_1{{$val['id']}}"   value="c" {{ $val['answer'] == 'c' ? 'checked' : 'disabled' }}>
+                                                        <label for="opt_1">{{$val['deskripsi']}}</label>
                                                     </li>
-                                                    <li class="step_{{$val['question']['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
-                                                        <input type="radio" id="opt_4{{$val['question']['id']}}"  value="d"  {{ $val['answer'] == 'd' ? 'checked' : 'disabled' }}>
-                                                        <label for="opt_4">{{$val['question']['d']}}</label>
-                                                    </li>
-                                                    <li class="step_{{$val['question']['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
-                                                        <input type="radio" id="opt_5{{$val['question']['id']}}"  value="e"  {{ $val['answer'] == 'e' ? 'checked' : 'disabled' }}>
-                                                        <label for="opt_5">{{$val['question']['e']}}</label>
-                                                    </li>
+                                                    <li class="active step_{{$val['id']}} rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
+                                                        <input type="radio" id="opt_1{{$val['id']}}"   value="d" {{ $val['answer'] == 'd' ? 'checked' : 'disabled' }}>
+                                                        <label for="opt_1">{{$val['deskripsi']}}</label>
+                                                    </li> --}}
 
                                                 </ul>
-
                                             </div>
                                         </div>
                                     </div>

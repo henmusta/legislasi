@@ -11,7 +11,7 @@
                            <img  src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="logo" height="50">
                     </div>
                     <div class="text-muted">
-                        {{ \Carbon\Carbon::parse($data['agenda']['created_at'])->isoFormat('dddd, D MMMM Y')}}
+                        {{ \Carbon\Carbon::parse($data['question']['created_at'])->isoFormat('dddd, D MMMM Y')}}
                         {{-- {{ $data['legislasi']['created_at'] ?? '' }} --}}
                     </div>
                 </div>
@@ -21,20 +21,20 @@
                 <div class="row" style="padding-top:10px;">
                     <div class="col-md-4">
                         <address class="mb-6">
-                            <h5 class="mb-2">Judul</h5>
-                           <p>  {{ $data['agenda']['judul'] ?? '' }}</p>
+                            <h5 class="mb-2">Kategori Survey</h5>
+                           <p>  {{ $data['question']['kategorisurvey']['name'] ?? '' }}</p>
                         </address>
                     </div>
                     <div class="col-md-4">
                         <address class="mb-6 mb-0">
-                            <h5 class="mb-2">Tahapan</h5>
-                           <p>  {{ $data['tahapan']['name'] ?? '' }}</p>
+                            <h5 class="mb-2">Survey</h5>
+                            <p>  {{ $data['question']['survey']['name'] ?? '' }}</p>
                         </address>
                     </div>
                     <div class="col-md-4">
                         <address class="mb-6 mb-0">
-                            <h5 class="mb-2">Legislasi</h5>
-                           <p>  {{ $data['legislasi']['judul'] ?? '' }}</p>
+                            <h5 class="mb-2">Qustion</h5>
+                            <p>  {!! $data['question']['question'] ?? '' !!}</p>
                         </address>
                     </div>
 
@@ -47,15 +47,15 @@
                         <table class="table table-striped align-middle">
                             <thead>
                                 <tr class="">
-                                    <th class="text-center">Lampiran</th>
-                                    <th class="text-center">Keterangan</th>
+                                    <th width="5%" class="text-left">Opsi</th>
+                                    <th class="text-left">Pertanyaan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data['file'] as $val)
+                                @foreach($data['questiondetail'] as $val)
                                 <tr>
-                                  <td><a href="{{ $val->name != NULL ? asset("/storage/lampiran/".$val->name) : '' }}" download >{{$val->name ?? ''}}</a></td>
-                                  <td>{{$val->keterangan ?? '-'}}</td>
+                                  <td>{{$val->answer ?? '-'}}</td>
+                                  <td>{{$val->deskripsi ?? '-'}}</td>
                                 </tr>
                                 @endforeach
 

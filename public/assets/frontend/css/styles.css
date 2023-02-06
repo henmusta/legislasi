@@ -9135,7 +9135,7 @@
   .footer-list-style3 li a:before {
     content: "\f105";
     font-weight: 700;
-    font-family: "Font Awesome 5 Free";
+    font-family: Font Awesome\5 Free;
     color: #6f6f6f;
     padding-right: 8px;
     -webkit-transition-duration: 0.3s;

@@ -229,7 +229,7 @@ $(document).ready(function () {
 
       $("#formStore").submit(function (e) {
         e.preventDefault();
-
+        for (instance in CKEDITOR.instances) {CKEDITOR.instances[instance].updateElement()}
         let form = $(this);
         let btnSubmit = form.find("[type='submit']");
         let btnSubmitHtml = btnSubmit.html();

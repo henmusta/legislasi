@@ -41,7 +41,7 @@ class FrontendSurveyController extends Controller
         ['url' => '#', 'title' => "Update Survey"],
       ];
       $survey = Survey::with('kategorisurvey')->findOrFail($id);
-      $question = Question::where([
+      $question = Question::with('questiondetail')->where([
         ['survey_id' , $id],
         ['kategorisurvey_id' , $survey['kategorisurvey']['id']]
       ])->get();
@@ -91,6 +91,8 @@ class FrontendSurveyController extends Controller
 
 
                 foreach($request['params'] as $key => $val){
+
+                    // dd($val);
                     $answer = 'answer_'.$val['question_id'];
                     $partisipandetail = PartisipanDetail::create([
                         'participants_id' =>  $partisipan['id'],

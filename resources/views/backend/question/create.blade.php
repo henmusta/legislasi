@@ -27,15 +27,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="select2kategorisurvey">Kategori Survey<span class="text-danger">*</span></label>
-                                    <select id="select2kategorisurvey" style="width: 100% !important;" name="kategorisurvey_id">
+                                    <label for="select2survey">Survey<span class="text-danger">*</span></label>
+                                    <select id="select2survey" style="width: 100% !important;" name="survey_id">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="select2survey">Survey<span class="text-danger">*</span></label>
-                                    <select id="select2survey" style="width: 100% !important;" name="survey_id">
+                                    <label for="select2kategorisurvey">Kategori Survey<span class="text-danger">*</span></label>
+                                    <select id="select2kategorisurvey" style="width: 100% !important;" name="kategorisurvey_id">
                                     </select>
                                 </div>
                             </div>
@@ -62,24 +62,24 @@
                                         </thead>
                                         <tbody>
                                               <tr>
-                                                <th>A</th>
-                                                <th><input type="text" id="a" name="a"  class="form-control" placeholder="Masukan Jawaban Opsi A"/></th>
+                                                <th width="2%"><input type="text" id="a" name="params[0][answer]"  class="form-control" value="a"/></th>
+                                                <th><input type="text" id="a" name="params[0][deskripsi]"  class="form-control" placeholder="Masukan Jawaban Opsi A"/></th>
                                               </tr>
                                               <tr>
-                                                <th>B</th>
-                                                <th><input type="text" id="b" name="b"  class="form-control" placeholder="Masukan Jawaban Opsi B"/></th>
+                                                <th width="2%"><input type="text" id="b" name="params[1][answer]"  class="form-control" value="b"/></th>
+                                                <th><input type="text" id="b" name="params[1][deskripsi]"  class="form-control" placeholder="Masukan Jawaban Opsi B"/></th>
                                               </tr>
                                               <tr>
-                                                <th>C</th>
-                                                <th><input type="text" id="c" name="c"  class="form-control" placeholder="Masukan Jawaban Opsi C"/></th>
+                                                <th width="2%"><input type="text" id="c" name="params[2][answer]"  class="form-control" value="c"/></th>
+                                                <th><input type="text" id="c" name="params[2][deskripsi]"  class="form-control" placeholder="Masukan Jawaban Opsi C"/></th>
                                               </tr>
                                               <tr>
-                                                <th>D</th>
-                                                <th><input type="text" id="d" name="d"  class="form-control" placeholder="Masukan Jawaban Opsi D"/></th>
+                                                <th width="2%"><input type="text" id="d" name="params[3][answer]"  class="form-control" value="d"/></th>
+                                                <th><input type="text" id="d" name="params[3][deskripsi]"  class="form-control" placeholder="Masukan Jawaban Opsi D"/></th>
                                               </tr>
                                               <tr>
-                                                <th>E</th>
-                                                <th><input type="text" id="e" name="e"  class="form-control" placeholder="Masukan Jawaban Opsi E"/></th>
+                                                <th width="2%"><input type="text" id="e" name="params[4][answer]"  class="form-control" value="e"/></th>
+                                                <th><input type="text" id="e" name="params[4][deskripsi]"  class="form-control" placeholder="Masukan Jawaban Opsi E"/></th>
                                               </tr>
                                         </tbody>
                                     </table>
@@ -149,18 +149,7 @@ $(document).ready(function () {
         searchInputPlaceholder: 'Cari Kategori Survey',
         allowClear: true,
         width: '100%',
-        placeholder: 'select Kategori Survey',
-        ajax: {
-          url: "{{ route('backend.kategorisurvey.select2') }}",
-          dataType: "json",
-          cache: true,
-          data: function (e) {
-            return {
-              q: e.term || '',
-              page: e.page || 1
-            }
-          },
-        },
+        placeholder: 'select Kategori Survey'
       }).on('select2:select', function (e) {
             let data = e.params.data;
             console.log(data.id);
@@ -186,7 +175,8 @@ $(document).ready(function () {
         },
       }).on('select2:select', function (e) {
             let data = e.params.data;
-            console.log(data.id);
+            let optionListKategori = new Option(data.name_kategori, data.id_kategori, false, false);
+            select2kategorisurvey.append(optionListKategori).trigger('change');
       });
 
 

@@ -39,7 +39,7 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
-    document.getElementById("nextBtn").innerHTML = "Next Question";
+    document.getElementById("nextBtn").innerHTML = "Lanjut";
   }
   // ... and run a function that displays the correct step indicator:
   fixStepIndicator(n)

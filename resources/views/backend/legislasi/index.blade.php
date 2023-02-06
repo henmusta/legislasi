@@ -31,7 +31,7 @@
                                 <th>Pengusul</th>
                                 {{-- <th>Deskripsi</th> --}}
                                 <th>Tahapan</th>
-                                <th>Keterangan Tahapan</th>
+                                {{-- <th>Keterangan Tahapan</th> --}}
                                 <th>Aksi</th>
                               </tr>
                         </thead>
@@ -107,7 +107,7 @@
           {data: 'pengusul.name', name: 'pengusul.name'},
         //   {data: 'deskripsi', name: 'deskripsi'},
           {data: 'tahapan.name', name: 'tahapan.name'},
-          {data: 'keterangan', name: 'keterangan'},
+        //   {data: 'keterangan', name: 'keterangan'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         columnDefs: [

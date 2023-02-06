@@ -22,7 +22,7 @@
                     <table id="Datatable" class="table table-bordered border-bottom w-100" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="5%">No</th>
+                                {{-- <th width="5%">No</th> --}}
                                 <th>Ranperda</th>
                                 <th>Name</th>
                                 <th>Comment</th>
@@ -101,21 +101,20 @@ tr.group:hover {
         },
 
         columns: [
-          {
-                data: "id", name:'id',
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-          },
+        //   {
+        //         data: "id", name:'id',
+        //         render: function (data, type, row, meta) {
+        //             return meta.row + meta.settings._iDisplayStart + 1;
+        //         }
+        //   },
           {data: 'legislasi.judul', name: 'legislasi.judul'},
           {data: 'name', name: 'name'},
           {data: 'comment', name: 'comment'},
           {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
         rowGroup: {
-      // Uses the 'row group' plugin
             dataSrc: 'legislasi.judul',
-            startRender: function(rows, group) {
+                startRender: function(rows, group) {
                 var collapsed = !!collapsedGroups[group];
 
                 rows.nodes().each(function(r) {
@@ -127,7 +126,7 @@ tr.group:hover {
 
                 // Add category name to the <tr>. NOTE: Hardcoded colspan
                 return $('<tr/>')
-                .append('<td colspan="5">' + group + ' (' + rows.count() + ')</td>')
+                .append('<td colspan="4">' + group + ' (' + rows.count() + ')</td>')
                 .attr('data-name', group)
                 .toggleClass('collapsed', collapsed);
             }

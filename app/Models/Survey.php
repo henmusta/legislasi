@@ -19,4 +19,10 @@ class Survey extends Model
    {
      return $this->belongsTo(KategoriSurvey::class, 'kategorisurvey_id');
    }
+
+   public function partisipan()
+   {
+     return $this->hasMany(Partisipan::class, 'survey_id');
+   }
+
 }

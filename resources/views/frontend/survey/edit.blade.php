@@ -113,26 +113,29 @@
                             <div class="form_items d-flex justify-content-center">
                                 <input type="hidden" name="params[{{$key}}][question_id]" value="{{$val['id']}}"/>
                                 <ul class="ps-0" style="text-align: left !important">
-                                  <li class="rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
-                                     <input type="radio" id="opt_1{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="a" checked>
-                                     <label for="opt_1">{{$val['a']}}</label>
-                                  </li>
-                                  <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
+                                @foreach ($val['questiondetail'] as $i => $item)
+                                    <li class="rounded-pill bg-white animate__animated animate__fadeInRight animate_50ms">
+                                        <input type="radio" id="opt_1{{$item['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="{{$item['answer']}}" {{$i == 0 ? 'checked' : ''}}>
+                                        <label for="opt_1">{{$item['deskripsi']}}</label>
+                                    </li>
+                                @endforeach
+
+                                  {{-- <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
                                      <input type="radio" id="opt_2{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="b">
                                      <label for="opt_2">{{$val['b']}}</label>
                                   </li>
                                   <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
                                     <input type="radio" id="opt_3{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="c">
                                     <label for="opt_3">{{$val['c']}}</label>
-                                 </li>
-                                 <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
+                                  </li>
+                                   <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
                                     <input type="radio" id="opt_4{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="d">
                                     <label for="opt_4">{{$val['d']}}</label>
-                                 </li>
-                                 <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
-                                    <input type="radio" id="opt_5{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="e">
-                                    <label for="opt_5">{{$val['e']}}</label>
-                                 </li>
+                                   </li>
+                                    <li class=" rounded-pill bg-white animate__animated animate__fadeInRight animate_100ms">
+                                        <input type="radio" id="opt_5{{$val['id']}}" name="params[{{$key}}][answer_{{$val['id']}}]" value="e">
+                                        <label for="opt_5">{{$val['e']}}</label>
+                                    </li> --}}
                                </ul>
                             </div>
                           </div>
@@ -141,8 +144,8 @@
 
                           <!---------- Form Button ---------->
                           <div class="form_btn text-center ms-5 mt-5">
-                             <button type="button" class="f_btn text-uppercase rounded-pill border-0" id="prevBtn" onclick="nextPrev(-1)">Last Question</button>
-                             <button type="button" class="f_btn text-uppercase rounded-pill border-0" id="nextBtn" onclick="nextPrev(1)">Next Question</button>
+                             <button type="button" class="f_btn text-uppercase rounded-pill border-0" id="prevBtn" onclick="nextPrev(-1)">Kembali</button>
+                             <button type="button" class="f_btn text-uppercase rounded-pill border-0" id="nextBtn" onclick="nextPrev(1)">Lanjut</button>
                           </div>
 
                     </div>

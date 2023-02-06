@@ -27,7 +27,7 @@
                     <table id="Datatable" class="table table-bordered border-bottom w-100" style="width:100%">
                         <thead>
                             <tr>
-                                <th width="5%">No</th>
+                                {{-- <th width="5%">No</th> --}}
                                 <th>Ranperda</th>
                                 <th>Agenda</th>
                                 <th>Deskripsi</th>
@@ -96,7 +96,7 @@ tr.group:hover {
         scrollX: false,
         processing: true,
         serverSide: true,
-        order: [[1, 'desc']],
+        order: [[0, 'desc']],
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         pageLength: 10,
         ajax: {
@@ -107,12 +107,12 @@ tr.group:hover {
         },
 
         columns: [
-          {
-                data: "id", name:'id',
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-          },
+        //   {
+        //         data: "id", name:'id',
+        //         render: function (data, type, row, meta) {
+        //             return meta.row + meta.settings._iDisplayStart + 1;
+        //         }
+        //   },
           {data: 'legislasi.judul', name: 'legislasi.judul'},
           {data: 'judul', name: 'judul'},
           {data: 'deskripsi', name: 'deskripsi'},
@@ -134,7 +134,7 @@ tr.group:hover {
 
                 // Add category name to the <tr>. NOTE: Hardcoded colspan
                 return $('<tr/>')
-                .append('<td colspan="6">' + group + ' (' + rows.count() + ')</td>')
+                .append('<td colspan="5">' + group + ' (' + rows.count() + ')</td>')
                 .attr('data-name', group)
                 .toggleClass('collapsed', collapsed);
             }

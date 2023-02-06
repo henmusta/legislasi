@@ -33,12 +33,14 @@
                   <div class="owl-stage-outer">
                     <div class="owl-stage" style="transform: translate3d(-1728px, 0px, 0px); transition: all 0.9s ease 0s; width: 4320px;">
                         @foreach ($data['survey'] as $val )
-                        <div class="owl-item" style="width: 400px;">
+                        <div class="owl-item" style="width: 400px; ">
                             <article class="blog-grid-simple">
-                              <h3>
+                              <h5>
                                 <a href="e-survey/{{$val['id']}}/edit">{{$val['name']}}</a>
-                              </h3>
-                              {!!$val['deskripsi']!!}
+                              </h5>
+                              <div>
+                                {!!substr($val['deskripsi'], 0, 125)!!}
+                              </div>
                               <div class="blog-grid-simple-content">
                                 <div class="row">
                                   <div class="blog-grid-simple-date">

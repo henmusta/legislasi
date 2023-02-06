@@ -35,7 +35,7 @@ class SurveyController extends Controller
                 </a>
 
                 <div class="dropdown-menu" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);">
-                    <a href="' . route('backend.legislasi.show', $row->id) . '" class="dropdown-item">Detail</a>
+                    <a href="' . route('backend.survey.show', $row->id) . '" class="dropdown-item">Detail</a>
                     <a class="dropdown-item" href="survey/' . $row->id . '/edit">Update</a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-id="' . $row->id . '" class="delete dropdown-item">Hapus</a>
                 </div>
@@ -136,19 +136,21 @@ class SurveyController extends Controller
       $resultCount = 10;
       $offset = ($page - 1) * $resultCount;
       $kategorisurvey_id = $request['kategorisurvey_id'];
-      $data = Survey::where('name', 'LIKE', '%' . $request->q . '%')
+      $data = Survey::where('survey.name', 'LIKE', '%' . $request->q . '%')
+        ->leftJoin('kategorisurvey', 'survey.kategorisurvey_id', '=', 'kategorisurvey.id')
         ->when($kategorisurvey_id, function ($query, $kategorisurvey_id) {
-          return $query->where('kategorisurvey_id', $kategorisurvey_id);
+          return $query->where('survey.kategorisurvey_id', $kategorisurvey_id);
          })
-        ->orderBy('name')
+        ->orderBy('survey.name')
         ->skip($offset)
         ->take($resultCount)
-        ->selectRaw('id, name as text')
+        ->selectRaw('survey.id as id, survey.name as text, kategorisurvey.id as id_kategori, kategorisurvey.name as name_kategori')
         ->get();
 
-      $count = Survey::where('name', 'LIKE', '%' . $request->q . '%')
+      $count = Survey::where('survey.name', 'LIKE', '%' . $request->q . '%')
+        ->leftJoin('kategorisurvey', 'survey.kategorisurvey_id', '=', 'kategorisurvey.id')
         ->when($kategorisurvey_id, function ($query, $kategorisurvey_id) {
-            return $query->where('kategorisurvey_id', $kategorisurvey_id);
+            return $query->where('survey.kategorisurvey_id', $kategorisurvey_id);
         })
         ->get()
         ->count();

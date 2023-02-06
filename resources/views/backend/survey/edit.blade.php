@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="flex-shrink-0">
                                     <a class="btn btn-primary " href="{{ route('backend.question.create', ['survey_id'=> Request::segment(3), 'kategorisurvey_id' => $data['kategori']['id']]) }}">
-                                        Tambah Agenda
+                                        Tambah Pertanyaan
                                         <i class="fas fa-plus"></i>
                                     </a>
                                 </div>

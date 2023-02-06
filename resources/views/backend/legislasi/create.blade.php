@@ -27,14 +27,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label>Keterangan Tahapan<span class="text-danger">*</span></label>
                                     <textarea rows="5" id="keterangan" autocomplete="off" class="form-control" name="keterangan"></textarea>
                                   </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                            </div> --}}
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="select2Pengusul">Pengusul<span class="text-danger">*</span></label>
@@ -42,7 +40,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
                                 <div class="mb-3">
                                     <label>Judul Legislasi<span class="text-danger">*</span></label>
                                     <input type="text" id="judul" name="judul"  class="form-control" placeholder="Masukan Judul Legislasi"/>
@@ -112,7 +113,7 @@ $(document).ready(function () {
         searchInputPlaceholder: 'Cari Pengusul',
         allowClear: true,
         width: '100%',
-        placeholder: 'select tahapan',
+        placeholder: 'select Pengusul',
         ajax: {
           url: "{{ route('backend.pengusul.select2') }}",
           dataType: "json",
