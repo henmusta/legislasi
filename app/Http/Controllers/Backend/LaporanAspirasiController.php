@@ -35,10 +35,10 @@ class LaporanAspirasiController extends Controller
                 $data->whereDate('aspirasi.created_at', '<=', $request['tgl_akhir']);
             }
             if ($request->filled('skpd_id')) {
-                $data->where('aspirasi.skpd_id', $request['skpd_id']);
+                $data->where('aspirasi.skpd', $request['skpd_id']);
             }
             if ($request->filled('dewan_id')) {
-                $data->where('aspirasi.dewan_id', $request['dewan_id']);
+                $data->where('aspirasi.dewan', $request['dewan_id']);
             }
           return DataTables::of($data)
             ->addColumn('action', function ($row) {
