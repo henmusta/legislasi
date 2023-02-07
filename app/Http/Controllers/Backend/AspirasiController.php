@@ -62,4 +62,20 @@ class AspirasiController extends Controller
 
       return view('backend.aspirasi.show', compact('page_breadcrumbs', 'config', 'data'));
     }
+
+
+    public function destroy($id)
+    {
+        $data = Aspirasi::findOrFail($id);
+        // $uploadcek = AgendaFile::where('agenda_id', $id)->get();
+        if (isset($data)) {
+            if($data->delete()){
+                Fileupload::deleteFile($data['lampiran'], 'lampiran');
+            }
+            // $data->delete();
+            $response = response()->json($this->responseDelete(true));
+
+        }
+        return $response;
+    }
 }

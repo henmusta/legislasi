@@ -119,7 +119,7 @@
       modalDelete.addEventListener('show.bs.modal', function (event) {
         let button = event.relatedTarget;
         let id = button.getAttribute('data-bs-id');
-        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.agenda.index") }}/' + id);
+        this.querySelector('.urlDelete').setAttribute('href', '{{ route("backend.aspirasi.index") }}/' + id);
       });
       modalDelete.addEventListener('hidden.bs.modal', function (event) {
         this.querySelector('.urlDelete').setAttribute('href', '');
