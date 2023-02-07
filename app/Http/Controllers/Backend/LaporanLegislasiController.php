@@ -30,12 +30,14 @@ class LaporanLegislasiController extends Controller
           ['url' => '#', 'title' => "Laporan Legislasi"],
         ];
         if ($request->ajax()) {
+            $tgl_awal = date("m",strtotime($request['tgl_awal']));
+            $tgl_akhir = date("m",strtotime($request['tgl_akhir']));
           $data = Agenda::with('tahapan','legislasi')->select('agenda.*');
             if ($request->filled('tgl_awal')) {
-               $data->whereDate('agenda.created_at', '>=', $request['tgl_awal']);
+               $data->whereMonth('agenda.created_at', '>=',  $tgl_awal);
             }
             if ($request->filled('tgl_akhir')) {
-                $data->whereDate('agenda.created_at', '<=', $request['tgl_akhir']);
+                $data->whereMonth('agenda.created_at', '<=', $tgl_akhir);
             }
             if ($request->filled('skpd_id')) {
                 $data->where('agenda.legislasi_id', $request['legislasi_id']);

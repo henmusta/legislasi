@@ -27,12 +27,14 @@ class LaporanAspirasiController extends Controller
           ['url' => '#', 'title' => "Data Aspirasi"],
         ];
         if ($request->ajax()) {
-          $data = Aspirasi::with('get_dewan','get_skpd', 'get_kabupaten', 'get_kecamatan');
+            $tgl_awal = date("m",strtotime($request['tgl_awal']));
+            $tgl_akhir = date("m",strtotime($request['tgl_akhir']));
+            $data = Aspirasi::with('get_dewan','get_skpd', 'get_kabupaten', 'get_kecamatan');
             if ($request->filled('tgl_awal')) {
-               $data->whereDate('aspirasi.created_at', '>=', $request['tgl_awal']);
+               $data->whereMonth('aspirasi.created_at', '>=', $tgl_awal);
             }
             if ($request->filled('tgl_akhir')) {
-                $data->whereDate('aspirasi.created_at', '<=', $request['tgl_akhir']);
+                $data->whereMonth('aspirasi.created_at', '<=', $tgl_akhir);
             }
             if ($request->filled('skpd_id')) {
                 $data->where('aspirasi.skpd', $request['skpd_id']);

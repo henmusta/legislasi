@@ -30,7 +30,8 @@ class LaporanSurveyController extends Controller
         ];
         $survey_id = $request['survey_id'];
         // dd($survey_id);
-        $data = QuestionDetail::with('question')->
+
+                          $data = QuestionDetail::with('question')->
                             selectRaw('question.question as pertanyaan,
                                 survey.name as survey_name,
                                 question_detail.deskripsi as deskripsi,
@@ -48,56 +49,10 @@ class LaporanSurveyController extends Controller
                               ->join('participants_detail', 'participants_detail.question_id', '=', 'question.id')
                               ->join('survey', 'question.survey_id', '=', 'survey.id')
                                ->when($survey_id, function ($query, $survey_id) {
-                                return $query->where('survey.id', $survey_id);
+                                  return $query->where('survey.id', $survey_id);
                                 })
                               ->groupBy('question_detail.id')
                               ->get();
-        // $data = [];
-        // foreach($query as $key => $val){
-        //     // dd($query[$key]['id']);
-        //     $data[$key]['survey'][] = $val['survey'];
-        //     $data[$key]['question'][] = $val['question'];
-        //     if(isset($val['a'])){
-        //         $data[$key]['answer']['a'] = $val['a'];
-        //     };
-        //     if(isset($val['b'])){
-        //         $data[$key]['answer']['b'] = $val['b'];
-        //     };
-        //     if(isset($val['c'])){
-        //         $data[$key]['answer']['c'] = $val['c'];
-        //     };
-        //     if(isset($val['d'])){
-        //         $data[$key]['answer']['d'] = $val['d'];
-        //     };
-        //     if(isset($val['e'])){
-        //         $data[$key]['answer']['e'] = $val['e'];
-        //     };
-        //     // if(isset($val['b'])){
-        //     //     // $data[]['question'] = $val['question'];
-        //     //     $data[$key]['answer'] = $val['b'];
-        //     //     // $data[]['b_count'] = $val['b'];
-        //     // };
-        //     // if(isset($val['c'])){
-        //     //     // $data[]['question'] = $val['question'];
-        //     //     $data[$key]['answer'] = $val['c'];
-        //     //     // $data[]['c_count'] = $val['c'];
-        //     // };
-        //     // if(isset($val['d'])){
-        //     //     // $data[]['question'] = $val['question'];
-        //     //     $data[$key]['answer'] = $val['d'];
-        //     //     // $data[]['d_count'] = $val['d'];
-        //     // };
-        //     // if(isset($val['e'])){
-        //     //     // $data[]['question'] = $val['question'];
-        //     //     $data[]['answer'] = $val['e'];
-        //     //     // $data[]['e_count'] = $val['e'];
-        //     // };
-        // }
-        // foreach ($data as $i => $item){
-        //     // dd($query[$key]['question']);
-        //     $data[$i]['question'] = $query[$key]['question'];
-        // }
-        // dd($data);
         if ($request->ajax()) {
 
           return DataTables::of($data)
