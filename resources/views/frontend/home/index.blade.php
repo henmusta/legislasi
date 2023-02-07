@@ -221,7 +221,7 @@ $(document).ready(function () {
             success: function(data) {
                 console.log(data.paijsontahapan);
 
-                let ctxPie = document.getElementById("ChartPaiTahapan");
+                    let ctxPie = document.getElementById("ChartPaiTahapan");
                     ctxPie.height = 300;
                         myChartPie =
                         new Chart(ctxPie, {

@@ -44,11 +44,11 @@ class LaporanSurveyController extends Controller
                                 // select('question.question as pertanyaan',
                                 //        'survey.name as survey_name',
                                 //        'question_detail.deskripsi as deskripsi')
-                              ->leftJoin('question', 'question.id', '=', 'question_detail.question_id')
-                              ->leftJoin('participants_detail', 'participants_detail.question_id', '=', 'question.id')
-                              ->leftJoin('survey', 'question.survey_id', '=', 'survey.id')
+                              ->join('question', 'question.id', '=', 'question_detail.question_id')
+                              ->join('participants_detail', 'participants_detail.question_id', '=', 'question.id')
+                              ->join('survey', 'question.survey_id', '=', 'survey.id')
                                ->when($survey_id, function ($query, $survey_id) {
-                                return $query->where('survey1.id', $survey_id);
+                                return $query->where('survey.id', $survey_id);
                                 })
                               ->groupBy('question_detail.id')
                               ->get();

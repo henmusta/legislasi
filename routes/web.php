@@ -80,6 +80,7 @@ Route::get('backend/dewan/select2', [Backend\DewanController::class, 'select2'])
 Route::get('backend/skpd/select2', [Backend\SkpdController::class, 'select2'])->name('backend.skpd.select2');
 Route::middleware('auth:henmus')->group(function(){
   Route::prefix('backend')->name('backend.')->group(function(){
+    Route::get('dashboard/countdashboard', [Backend\DashboardController::class, 'countdashboard'])->name('dashboard.countdashboard');
     Route::get('dashboard', [Backend\DashboardController::class, 'index'])->name('index');
     Route::post('resetpassword', [Backend\UserController::class, 'resetpassword'])->name('users.resetpassword');
     Route::post('changepassword', [Backend\UserController::class, 'changepassword'])->name('users.changepassword');
@@ -170,15 +171,19 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('page', Backend\PagesController::class);
 
           //question
-          Route::get('laporansurvey/countsurvey', [Backend\LaporanSurveyController::class, 'countsurvey'])->name('LaporanSurvey.countadmin');
+          Route::get('laporansurvey/countsurvey', [Backend\LaporanSurveyController::class, 'countsurvey'])->name('laporansurvey.countsurvey');
           Route::resource('laporansurvey', Backend\LaporanSurveyController::class);
 
             //question
+          Route::get('laporanaspirasi/countaspirasi', [Backend\LaporanAspirasiController::class, 'countaspirasi'])->name('laporanaspirasi.countaspirasi');
           Route::resource('laporanaspirasi', Backend\LaporanAspirasiController::class);
 
-              //question
-
+          //question
+          Route::get('laporanlegislasi/countlegislasi', [Backend\LaporanLegislasiController::class, 'countlegislasi'])->name('laporanlegislasi.countlegislasi');
           Route::resource('laporanlegislasi', Backend\LaporanLegislasiController::class);
+
+        //   //question
+        //   Route::resource('laporanaspirasi', Backend\LaporanLegislasiController::class);
 
   });
 });

@@ -78,7 +78,8 @@
         </div>
         <div class="card">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12" style="text-align: right">
+                    <button style="margin: 20px" class="btn-primary" onclick="PrintChart()">Print Chart</button>
                     <div class="chartjs-wrapper-demo">
                      <canvas id="ChartAreaSurvey"></canvas>
                    </div>
@@ -107,6 +108,7 @@ tr.dtrg-level-1:hover {
 </style>
 @endsection
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/jspdf@1.5.3/dist/jspdf.min.js"></script>
 <script src="https://cdn.datatables.net/rowgroup/1.3.0/js/dataTables.rowGroup.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
@@ -121,8 +123,56 @@ tr.dtrg-level-1:hover {
 <script src="{{ asset('assets/backend/vendor_components/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/backend/vendor_components/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
   <script>
+// function PrintChart() {
+//     var canvas = document.getElementById("ChartAreaSurvey");
+//     var win = window.open();
+//     win.document.write("<br><img src='" + canvas.toDataURL() + "'/>");
+//     win.print();
+//     win.location.reload();
 
+// }\
+function PrintChart() {
+    // id = 'ChartAreaSurvey';
+    // var canvas = document.getElementById(id);
+    // var win = window.open(canvas.toDataURL(), '_blank');
+
+    var canvas = document.querySelector("#ChartAreaSurvey");
+    var canvas_img = canvas.toDataURL("image/png",1.0); //JPEG will not match background color
+    var pdf = new jsPDF('landscape','in', 'letter'); //orientation, units, page size
+    pdf.addImage(canvas_img, 'png', .5, 1.75, 10, 5); //image, type, padding left, padding top, width, height
+    pdf.autoPrint(); //print window automatically opened with pdf
+    var blob = pdf.output("bloburl");
+    window.open(blob);
+
+    // win.document.write("<br><img src='" + canvas.toDataURL() + "'/>");
+    // setTimeout(function () {
+    //     win.print();
+    //     win.location.reload();
+    // }, 500);
+
+}
      $(document).ready(function () {
+
+
+
+
+// function drawImage(){
+//     var ctx = $("canvas")[0].getContext("2d"),
+//         img = new Image();
+
+//     img.onload = function(){
+//         ctx.drawImage(img, 0, 0, 500, 500);
+//         $("span").text("Loaded.");
+//     };
+//     img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7udaoWuG0i57WCc7OyxkWG0jCkqMIBa7D7ff2Dk1Fk7rCsoQr";
+//     img.crossOrigin ="anonymous";
+//     $("span").text("Loading...");
+// }
+
+// $("#add").click(drawImage);
+// $("#print").click(PrintImage);
+
+
         let select2survey = $('#select2survey');
         select2survey.select2({
         dropdownParent: select2survey.parent(),
@@ -146,13 +196,27 @@ tr.dtrg-level-1:hover {
             let data = e.params.data;
 
       });
-         $('#tgl_awal').flatpickr({
-           dateFormat: "Y-m-d",
-           allowInput: true,
+      $('#tgl_awal').flatpickr({
+            disableMobile: "true",
+            plugins: [
+                new monthSelectPlugin({
+                shorthand: true,
+                dateFormat: "Y-m",
+                altFormat: "F Y",
+                theme: "material_blue"
+                })
+            ]
          });
          $('#tgl_akhir').flatpickr({
-           dateFormat: "Y-m-d",
-           allowInput: true,
+            disableMobile: "true",
+            plugins: [
+                new monthSelectPlugin({
+                shorthand: true,
+                dateFormat: "Y-m",
+                altFormat: "F Y",
+                theme: "material_blue"
+                })
+            ]
          });
          var collapsedGroups = {};
       let dataTable = $('#Datatable').DataTable({
@@ -188,8 +252,8 @@ tr.dtrg-level-1:hover {
         processing: true,
         serverSide: true,
         order: [[0, 'desc'],[1, 'desc']],
-        lengthMenu: [[50, -1], [50, "All"]],
-        pageLength: 10,
+        lengthMenu: [[100, -1], [100, "All"]],
+        pageLength: 100,
         ajax: {
           url: "{{ route('backend.laporansurvey.index') }}",
           data: function (d) {
