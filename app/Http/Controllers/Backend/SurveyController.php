@@ -167,4 +167,14 @@ class SurveyController extends Controller
 
       return response()->json($results);
     }
+
+    public function destroy($id)
+    {
+        $data = Survey::findOrFail($id);
+        if ($data->delete()) {
+          $response = response()->json($this->responseDelete(true));
+
+        }
+        return $response;
+    }
 }
