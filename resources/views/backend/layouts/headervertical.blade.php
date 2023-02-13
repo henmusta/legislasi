@@ -6,19 +6,19 @@
                 <a href="{{ url('backend/dashboard') }}" class="logo logo-dark">
                     <input type="text" id="logo" value="{{URL::to('storage/images/logo/'.Setting::get_setting()->sidebar_logo)}}">
                     <span class="logo-sm">
-                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
                     </span>
                 </a>
 
                 <a href="{{ url('backend/dashboard') }}" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
                     </span>
                     <span class="logo-sm">
-                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->logo)}}" alt="" height="22">
+                        <img src="{{URL::to('storage/images/logo/'.Setting::get_setting()->icon)}}" alt="" height="22">
                     </span>
                 </a>
             </div>
@@ -40,15 +40,6 @@
         </div>
 
         <div class="d-flex">
-
-
-
-
-
-
-
-
-
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,8 +48,8 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end pt-0">
                     <div class="p-3 border-bottom">
-                        <h6 class="mb-0">Jennifer Bennett</h6>
-                        <p class="mb-0 font-size-11 text-muted">jennifer.bennett@email.com</p>
+                        <h6 class="mb-0">{{Auth::user()->name}}</h6>
+                        <p class="mb-0 font-size-11 text-muted">{{Auth::user()->email}}</p>
                     </div>
                     <a class="dropdown-item" href="contacts-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                     <div class="dropdown-divider"></div>

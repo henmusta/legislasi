@@ -33,7 +33,6 @@
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
-            <!-- Left Menu Start -->
             {!! Menu::sidebar() !!}
         </div>
         <!-- Sidebar -->
