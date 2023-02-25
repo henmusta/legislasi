@@ -34,15 +34,24 @@ class FrontendLegislasiController extends Controller
           ['url' => route('home.index'), 'title' => "Home"],
           ['url' => '#', 'title' => "E-Legislasi"],
         ];
-        $legislasi = Legislasi::with('pengusul', 'tahapan');
-        $tahapan = TahapanLegislasi::withCount('legislasi')->get();
+        $legislasi = Legislasi::with('pengusul', 'tahapan')->where('status', '1');
+        $tahapan = TahapanLegislasi::selectRaw('CASE
+        WHEN
+           legislasi.status = "1" THEN COUNT(legislasi.id)
+        ELSE 0
+              END as legislasi_count, tahapanlegislasi.*')
+        ->leftJoin('legislasi', 'legislasi.tahapan_id' , '=', 'tahapanlegislasi.id' )
+        ->groupBy('tahapanlegislasi.id')->get();
             $data = [
                 'tahapan' => $tahapan,
                 'last_legislasi' => $legislasi->orderBy('id', 'DESC')->limit(3)->get()
             ];
 
         if ($request->ajax()) {
-          $data = Legislasi::with('pengusul', 'tahapan');
+          $data = Legislasi::with('pengusul', 'tahapan')->where('status', '1');
+        //   foreach($legislasi as $val){
+        //     dd($val);
+        //   }
           return DataTables::of($data)
 
             ->addColumn('updated_date', function ($row) {
@@ -56,7 +65,7 @@ class FrontendLegislasiController extends Controller
 
     public function show($id)
     {
-      $legislasi = Legislasi::with('pengusul', 'tahapan')->findOrFail($id);
+      $legislasi = Legislasi::with('pengusul', 'tahapan')->where('status', '1')->findOrFail($id);
       $agenda = Agenda::with('agendafile','tahapan')->where('legislasi_id', $legislasi['id']);
       $tahapan = TahapanLegislasi::with(["agenda" => function($q) use($id){
         $q->where('agenda.legislasi_id', '=', $id);
@@ -129,7 +138,14 @@ class FrontendLegislasiController extends Controller
 
     public function countlegislasi(Request $request){
 
-        $tahapan = TahapanLegislasi::withCount('legislasi')->get();
+        $tahapan = TahapanLegislasi::selectRaw('CASE
+        WHEN
+           legislasi.status = "1" THEN COUNT(legislasi.id)
+        ELSE 0
+              END as legislasi_count, tahapanlegislasi.*')
+        ->leftJoin('legislasi', 'legislasi.tahapan_id' , '=', 'tahapanlegislasi.id' )
+        ->groupBy('tahapanlegislasi.id')->get();
+
         $ChartTahapan = [
             'labels' => collect($tahapan)->pluck('name'),
             'datasets' => [

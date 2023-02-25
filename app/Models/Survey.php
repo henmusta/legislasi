@@ -13,6 +13,7 @@ class Survey extends Model
      'kategorisurvey_id',
      'name',
      'deskripsi',
+     'status',
    ];
 
    public function kategorisurvey()

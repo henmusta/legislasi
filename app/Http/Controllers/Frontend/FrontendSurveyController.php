@@ -24,7 +24,8 @@ class FrontendSurveyController extends Controller
           ['url' => route('home.index'), 'title' => "Home"],
           ['url' => '#', 'title' => "E-Aspirasi"],
         ];
-        $survey = Survey::all();
+        $survey = Survey::query()->where('status', '1')->get();
+        // dd($survey);
             $data = [
                 'survey' =>  $survey,
             ];
@@ -40,7 +41,7 @@ class FrontendSurveyController extends Controller
         ['url' => route('backend.survey.index'), 'title' => "Daftar Survey"],
         ['url' => '#', 'title' => "Update Survey"],
       ];
-      $survey = Survey::with('kategorisurvey')->findOrFail($id);
+      $survey = Survey::with('kategorisurvey')->where('status', '1')->findOrFail($id);
       $question = Question::with('questiondetail')->where([
         ['survey_id' , $id],
         ['kategorisurvey_id' , $survey['kategorisurvey']['id']]

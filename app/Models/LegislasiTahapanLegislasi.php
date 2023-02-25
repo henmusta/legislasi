@@ -16,8 +16,8 @@ class LegislasiTahapanLegislasi extends Model
    ];
 
 
-//    public function Tahapan()
-//    {
-//      return $this->belongsTo(TahapanLegislasi::class, 'tahapan_id');
-//    }
+   public function legislasi()
+   {
+     return $this->hasMany(Legislasi::class, 'tahapan_id');
+   }
 }

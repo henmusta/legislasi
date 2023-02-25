@@ -34,6 +34,7 @@ class LegislasiController extends Controller
           $data = Legislasi::with('pengusul', 'tahapan');
           return DataTables::of($data)
             ->addColumn('action', function ($row) {
+                $validasi = '<a href="#" data-bs-toggle="modal" data-bs-target="#modalValidasi" data-bs-id="' . $row->id . '"  data-bs-validasi="' . $row->status. '" class="edit dropdown-item">Validasi</a>';
                 return '<div class="dropdown">
                 <a href="#" class="btn btn-secondary" data-bs-toggle="dropdown">
                     Aksi <i class="mdi mdi-chevron-down"></i>
@@ -43,6 +44,7 @@ class LegislasiController extends Controller
                     <a href="' . route('backend.legislasi.show', $row->id) . '" class="dropdown-item">Detail</a>
                     <a class="dropdown-item" href="legislasi/' . $row->id . '/edit">Ubah</a>
                     <a href="#" data-bs-toggle="modal" data-bs-target="#modalDelete" data-bs-id="' . $row->id . '" class="delete dropdown-item">Hapus</a>
+                    '.$validasi.'
                 </div>
             </div>';
 
@@ -226,6 +228,35 @@ class LegislasiController extends Controller
 
         }
         return $response;
+    }
+
+    public function validasi(Request $request)
+    {
+          $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'validasi' => 'required',
+          ]);
+        //   dd($request['file']);
+          if ($validator->passes()) {
+            $data = Legislasi::find($request['id']);
+            DB::beginTransaction();
+            try {
+                  $data->update([
+                    'status' => $request['validasi'],
+                  ]);
+
+                DB::commit();
+                $response = response()->json($this->responseStore(true));
+            } catch (Throwable $throw) {
+                dd($throw);
+                DB::rollBack();
+                $response = response()->json($this->responseStore(false));
+              }
+
+          } else {
+            $response = response()->json(['error' => $validator->errors()->all()]);
+          }
+          return $response;
     }
 
 }

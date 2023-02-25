@@ -138,6 +138,7 @@ Route::middleware('auth:henmus')->group(function(){
 
 
           //legislasi
+          Route::put('kegislasi/validasi', [Backend\LegislasiController::class, 'validasi'])->name('legislasi.validasi');
           Route::get('legislasi/select2', [Backend\LegislasiController::class, 'select2'])->name('legislasi.select2');
           Route::resource('legislasi', Backend\LegislasiController::class);
 
@@ -157,6 +158,7 @@ Route::middleware('auth:henmus')->group(function(){
           Route::resource('feedback', Backend\CommentController::class);
 
           //survey
+          Route::put('survey/validasi', [Backend\SurveyController::class, 'validasi'])->name('survey.validasi');
           Route::get('survey/select2', [Backend\SurveyController::class, 'select2'])->name('survey.select2');
           Route::resource('survey', Backend\SurveyController::class);
 

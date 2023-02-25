@@ -15,6 +15,7 @@ class Legislasi extends Model
      'pengusul_id',
      'deskripsi',
      'tahapan_id',
+     'status',
      'keterangan'
    ];
 
