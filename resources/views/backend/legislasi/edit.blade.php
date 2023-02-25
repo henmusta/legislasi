@@ -31,12 +31,14 @@
                                             </select>
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-12">
+                                    <div class="col-md-12">
                                         <div class="mb-3">
-                                            <label>Keterangan Tahapan<span class="text-danger">*</span></label>
-                                            <textarea rows="5" id="keterangan" autocomplete="off" class="form-control" name="keterangan">{{ $data['legislasi']['keterangan'] ?? '' }}</textarea>
-                                          </div>
-                                    </div> --}}
+                                            <label for="select2Kategoriranperda">Kategori Ranperda<span class="text-danger">*</span></label>
+                                            <select id="select2Kategoriranperda" style="width: 100% !important;" name="kategoriranperda_id">
+                                                <option value="{{ $data['kategoriranperda']['id'] ?? '' }}">{{ $data['kategoriranperda']['name'] ?? '' }}</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="mb-3">
                                             <label for="select2Pengusul">Pengusul<span class="text-danger">*</span></label>
@@ -118,7 +120,32 @@
 $(document).ready(function () {
     let select2Tahapan = $('#select2Tahapan');
     let select2Pengusul = $('#select2Pengusul');
+    let select2KategoriRanperda = $('#select2Kategoriranperda');
     CKEDITOR.replace('my-editor');
+
+
+    select2KategoriRanperda.select2({
+        dropdownParent: select2KategoriRanperda.parent(),
+        searchInputPlaceholder: 'Cari Kategori Ranpperda',
+        allowClear: true,
+        width: '100%',
+        placeholder: 'select Kategori Ranperda',
+        ajax: {
+          url: "{{ route('backend.kategoriranperda.select2') }}",
+          dataType: "json",
+          cache: true,
+          data: function (e) {
+            return {
+              q: e.term || '',
+              page: e.page || 1
+            }
+          },
+        },
+      }).on('select2:select', function (e) {
+            let data = e.params.data;
+            console.log(data.id);
+      });
+
 
     let dataTable = $('#Datatable').DataTable({
         responsive: true,

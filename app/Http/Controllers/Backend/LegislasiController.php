@@ -68,7 +68,7 @@ class LegislasiController extends Controller
         // dd($request);
           $validator = Validator::make($request->all(), [
             'tahapan_id' => 'required|integer',
-            // 'keterangan' => 'required',
+            'kategoriranperda_id' => 'required',
             'pengusul_id' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
@@ -77,6 +77,7 @@ class LegislasiController extends Controller
           if ($validator->passes()) {
             $data = Legislasi::create([
                 'tahapan_id' => $request['tahapan_id'],
+                'kategoriranperda_id' => $request['kategoriranperda_id'],
                 'keterangan'  => '-',
                 'pengusul_id' => $request['pengusul_id'],
                 'judul' => $request['judul'],
@@ -104,7 +105,7 @@ class LegislasiController extends Controller
         ['url' => route('backend.legislasi.index'), 'title' => "Detail Legislasi"],
         ['url' => '#', 'title' => "Detail Legislasi"],
       ];
-      $legislasi = Legislasi::with('pengusul', 'tahapan')->findOrFail($id);
+      $legislasi = Legislasi::with('pengusul', 'tahapan', 'kategoriranperda')->findOrFail($id);
       $agenda = Agenda::with('agendafile')->where('legislasi_id', $legislasi['id'])->get();
       $comment = Comment::where('legislasi_id', $id)->get();
       $data = [
@@ -125,10 +126,11 @@ class LegislasiController extends Controller
         ['url' => route('backend.legislasi.index'), 'title' => "Daftar Legislasi"],
         ['url' => '#', 'title' => "Update Legislasi"],
       ];
-      $legislasi = Legislasi::with('pengusul', 'tahapan')->findOrFail($id);
+      $legislasi = Legislasi::with('pengusul', 'tahapan', 'kategoriranperda')->findOrFail($id);
       $data = [
         'legislasi' => $legislasi,
         'tahapan' => $legislasi['tahapan'],
+        'kategoriranperda' => $legislasi['kategoriranperda'],
         'pengusul' => $legislasi['pengusul']
       ];
 
@@ -139,7 +141,7 @@ class LegislasiController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tahapan_id' => 'required|integer',
-            // 'keterangan' => 'required',
+            'kategoriranperda_id' => 'required',
             'pengusul_id' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
@@ -151,6 +153,7 @@ class LegislasiController extends Controller
                 $data->update([
                     'tahapan_id' => $request['tahapan_id'],
                     'keterangan'  => '-',
+                    'kategoriranperda_id' => $request['kategoriranperda_id'],
                     'pengusul_id' => $request['pengusul_id'],
                     'judul' => $request['judul'],
                     'deskripsi' => $request['deskripsi'],

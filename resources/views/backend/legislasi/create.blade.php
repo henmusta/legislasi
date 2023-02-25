@@ -20,7 +20,15 @@
                       </div>
                       <div class="d-flex flex-column">
                         <div class="row">
-                            <div class="col-md-6">
+
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="select2Kategoriranperda">Kategori Ranperda<span class="text-danger">*</span></label>
+                                    <select id="select2Kategoriranperda" style="width: 100% !important;" name="kategoriranperda_id">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="select2Tahapan">Tahapan<span class="text-danger">*</span></label>
                                     <select id="select2Tahapan" style="width: 100% !important;" name="tahapan_id">
@@ -33,7 +41,7 @@
                                     <textarea rows="5" id="keterangan" autocomplete="off" class="form-control" name="keterangan"></textarea>
                                   </div>
                             </div> --}}
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="select2Pengusul">Pengusul<span class="text-danger">*</span></label>
                                     <select id="select2Pengusul" style="width: 100% !important;" name="pengusul_id">
@@ -85,7 +93,33 @@
 $(document).ready(function () {
     let select2Tahapan = $('#select2Tahapan');
     let select2Pengusul = $('#select2Pengusul');
+    let select2KategoriRanperda = $('#select2Kategoriranperda');
     CKEDITOR.replace('my-editor');
+
+    select2KategoriRanperda.select2({
+        dropdownParent: select2KategoriRanperda.parent(),
+        searchInputPlaceholder: 'Cari Kategori Ranpperda',
+        allowClear: true,
+        width: '100%',
+        placeholder: 'select Kategori Ranperda',
+        ajax: {
+          url: "{{ route('backend.kategoriranperda.select2') }}",
+          dataType: "json",
+          cache: true,
+          data: function (e) {
+            return {
+              q: e.term || '',
+              page: e.page || 1
+            }
+          },
+        },
+      }).on('select2:select', function (e) {
+            let data = e.params.data;
+            console.log(data.id);
+      });
+
+
+
     select2Tahapan.select2({
         dropdownParent: select2Tahapan.parent(),
         searchInputPlaceholder: 'Cari Tahapan',

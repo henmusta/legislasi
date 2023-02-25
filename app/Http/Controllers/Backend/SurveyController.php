@@ -26,7 +26,7 @@ class SurveyController extends Controller
           ['url' => '#', 'title' => "Data Survey"],
         ];
         if ($request->ajax()) {
-          $data = Survey::with('kategorisurvey');
+          $data = Survey::with('kategorisurvey')->selectRaw('survey.*');
           return DataTables::of($data)
             ->addColumn('action', function ($row) {
                 return '<div class="dropdown">
@@ -167,6 +167,25 @@ class SurveyController extends Controller
 
       return response()->json($results);
     }
+
+    public function show($id)
+    {
+      $config['page_title'] = "Detail Survey";
+      $page_breadcrumbs = [
+        ['url' => route('backend.survey.index'), 'title' => "Detail Survey"],
+        ['url' => '#', 'title' => "Detail Survey"],
+      ];
+      $survey = Survey::withCount('partisipan', 'question')->with('kategorisurvey')->findOrFail($id);
+    //   dd($survey);
+    //   $agenda = Agenda::with('agendafile')->where('legislasi_id', $legislasi['id'])->get();
+    //   $comment = Comment::where('legislasi_id', $id)->get();
+      $data = [
+        'survey' =>  $survey
+      ];
+      return view('backend.survey.show', compact('page_breadcrumbs', 'config', 'data'));
+    }
+
+
 
     public function destroy($id)
     {

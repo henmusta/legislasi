@@ -25,19 +25,25 @@
 
 
                 <div class="row" style="padding-top:10px;">
-                    <div class="col-4">
+                    <div class="col-3">
+                        <address class="mb-6">
+                            <h5 class="mb-2">Kategori Ranperda</h5>
+                           <p>  {{ $data['legislasi']['kategoriranperda']['name'] ?? '' }}</p>
+                        </address>
+                    </div>
+                    <div class="col-3">
                         <address class="mb-6">
                             <h5 class="mb-2">Judul</h5>
                            <p>  {{ $data['legislasi']['judul'] ?? '' }}</p>
                         </address>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <address class="mb-6 mb-0">
                             <h5 class="mb-2">Tahapan</h5>
                            <p>  {{ $data['legislasi']['tahapan']['name'] ?? '' }}</p>
                         </address>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <address class="mb-6 mb-0">
                             <h5 class="mb-2">Pengusul</h5>
                            <p>  {{ $data['legislasi']['pengusul']['name'] ?? '' }}</p>

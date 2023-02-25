@@ -27,7 +27,7 @@ class ParticipantsController extends Controller
         ];
         if ($request->ajax()) {
             $survey_id =  $request['survey_id'];
-            $data = Partisipan::with('survey')
+            $data = Partisipan::with('survey')->selectRaw('participants.*')
             ->when( $survey_id, function ($query, $survey_id) {
               return $query->where('survey_id',  $survey_id);
             });

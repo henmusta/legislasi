@@ -11,6 +11,7 @@ class Legislasi extends Model
     protected $table = 'legislasi';
     protected $fillable = [
      'judul',
+     'kategoriranperda_id',
      'pengusul_id',
      'deskripsi',
      'tahapan_id',
@@ -20,6 +21,11 @@ class Legislasi extends Model
    public function pengusul()
    {
      return $this->belongsTo(Pengusul::class, 'pengusul_id');
+   }
+
+   public function kategoriranperda()
+   {
+     return $this->belongsTo(KategoriRanperda::class, 'kategoriranperda_id');
    }
 
    public function Tahapan()

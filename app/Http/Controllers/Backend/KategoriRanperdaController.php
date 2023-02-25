@@ -102,4 +102,41 @@ class KategoriRanperdaController extends Controller
         }
         return $response;
     }
+
+    public function select2(Request $request)
+    {
+      $page = $request->page;
+      $resultCount = 10;
+      $offset = ($page - 1) * $resultCount;
+      $provinsi_id = $request['provinsi_id'];
+      $data = Kategoriranperda::where('name', 'LIKE', '%' . $request->q . '%')
+
+        ->when($provinsi_id, function ($query, $provinsi_id) {
+        return $query->where('provinsi_id', $provinsi_id);
+        })
+        ->orderBy('name')
+        ->skip($offset)
+        ->take($resultCount)
+        ->selectRaw('id, name as text')
+        ->get();
+
+      $count = Kategoriranperda::where('name', 'LIKE', '%' . $request->q . '%')
+        ->when($provinsi_id, function ($query, $provinsi_id) {
+            return $query->where('provinsi_id', $provinsi_id);
+            })
+        ->get()
+        ->count();
+
+      $endCount = $offset + $resultCount;
+      $morePages = $count > $endCount;
+
+      $results = array(
+        "results" => $data,
+        "pagination" => array(
+          "more" => $morePages
+        )
+      );
+
+      return response()->json($results);
+    }
 }

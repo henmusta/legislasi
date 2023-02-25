@@ -25,4 +25,9 @@ class Survey extends Model
      return $this->hasMany(Partisipan::class, 'survey_id');
    }
 
+   public function Question()
+   {
+     return $this->hasMany(Question::class, 'survey_id');
+   }
+
 }

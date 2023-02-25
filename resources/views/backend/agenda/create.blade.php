@@ -225,7 +225,7 @@ $(document).ready(function () {
 			drawCallback : function( settings ){
 
 			}
-		});
+	});
 
       $("#formStore").submit(function (e) {
         e.preventDefault();
